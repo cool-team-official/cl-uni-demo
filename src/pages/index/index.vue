@@ -269,6 +269,13 @@ export default {
 		};
 	},
 
+	onShareAppMessage() {
+		return {
+			title: `简单易用的uni-app组件库`,
+			path: "/pages/index/index"
+		};
+	},
+
 	methods: {
 		toDemo({ key }, item) {
 			if (item.path) {
