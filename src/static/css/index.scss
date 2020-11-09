@@ -1,0 +1,33 @@
+.group {
+	margin-bottom: 20rpx;
+	background-color: #fff;
+
+	.header {
+		padding: 20rpx;
+		font-size: 28rpx;
+	}
+
+	.container {
+		padding: 10px;
+
+		&.no-padding {
+			padding: 0;
+		}
+	}
+}
+
+.row {
+	margin-bottom: 20rpx;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.cl-card {
+	margin: 20rpx;
+
+	&__more {
+		display: none !important;
+	}
+}
