@@ -4,6 +4,16 @@
 			<cl-text value="云想衣裳花想容，春风拂槛露华浓。"></cl-text>
 		</cl-card>
 
+		<cl-card label="不同颜色">
+			<view class="color">
+				<cl-text value="主色" color="primary"></cl-text>
+				<cl-text value="成功" color="success"></cl-text>
+				<cl-text value="错误" color="error"></cl-text>
+				<cl-text value="警告" color="warning"></cl-text>
+				<cl-text value="信息" color="info"></cl-text>
+			</view>
+		</cl-card>
+
 		<cl-card label="手机号">
 			<cl-text type="phone" value="13255022022"></cl-text>
 		</cl-card>
@@ -26,4 +36,12 @@
 export default {};
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.demo-text {
+	.color {
+		/deep/.cl-text {
+			margin-right: 20rpx;
+		}
+	}
+}
+</style>

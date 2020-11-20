@@ -1,6 +1,6 @@
 <template>
 	<view class="demo-tag">
-		<cl-card label="标签形状">
+		<cl-card label="基础用法">
 			<cl-tag type="primary">默认</cl-tag>
 			<cl-tag type="primary" round>圆角</cl-tag>
 		</cl-card>
@@ -26,8 +26,9 @@
 			<cl-tag type="info" plain>标签5</cl-tag>
 		</cl-card>
 
-		<cl-card label="其他标签">
+		<cl-card label="可移除标签">
 			<cl-tag type="primary" closable>标签1</cl-tag>
+			<cl-tag type="primary" closable>标签2</cl-tag>
 		</cl-card>
 	</view>
 </template>

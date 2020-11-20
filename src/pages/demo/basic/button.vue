@@ -2,7 +2,7 @@
 	<view class="demo-button">
 		<cl-card label="默认按钮">
 			<cl-row>
-				<cl-col v-for="(item, index) in list" :key="index" :span="6">
+				<cl-col v-for="(item, index) in list" :key="index" :span="8">
 					<cl-button :type="item.value">
 						<text>{{ item.label }}</text>
 					</cl-button>
@@ -12,7 +12,7 @@
 
 		<cl-card label="朴素按钮">
 			<cl-row>
-				<cl-col v-for="(item, index) in list" :key="index" :span="6">
+				<cl-col v-for="(item, index) in list" :key="index" :span="8">
 					<cl-button :type="item.value" plain>
 						<text>{{ item.label }}</text>
 					</cl-button>
@@ -22,7 +22,7 @@
 
 		<cl-card label="圆角按钮">
 			<cl-row>
-				<cl-col v-for="(item, index) in list" :key="index" :span="6">
+				<cl-col v-for="(item, index) in list" :key="index" :span="8">
 					<cl-button :type="item.value" round>
 						<text>{{ item.label }}</text>
 					</cl-button>
@@ -59,13 +59,24 @@
 			</cl-button>
 		</cl-card>
 
-		<cl-card label="其他按钮">
-			<cl-button disabled>
-				<text>禁用按钮</text>
-			</cl-button>
-			<cl-button type="success" loading>
-				<text>加载中</text>
-			</cl-button>
+		<cl-card label="禁用">
+			<cl-row>
+				<cl-col v-for="(item, index) in list" :key="index" :span="8">
+					<cl-button :type="item.value" disabled>
+						<text>{{ item.label }}</text>
+					</cl-button>
+				</cl-col>
+			</cl-row>
+		</cl-card>
+
+		<cl-card label="加载">
+			<cl-row>
+				<cl-col v-for="(item, index) in list" :key="index" :span="8">
+					<cl-button :type="item.value" loading>
+						<text>{{ item.label }}</text>
+					</cl-button>
+				</cl-col>
+			</cl-row>
 		</cl-card>
 
 		<cl-card label="按钮尺寸">

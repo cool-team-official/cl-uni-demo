@@ -1,6 +1,6 @@
 <template>
 	<view class="demo-filter-bar">
-		<cl-filter-bar value="price" :list="list" @change="onChange"></cl-filter-bar>
+		<cl-filter-bar v-model="val" :list="list" @change="onChange"></cl-filter-bar>
 	</view>
 </template>
 
@@ -8,6 +8,7 @@
 export default {
 	data() {
 		return {
+			val: "price",
 			list: [
 				{
 					label: "综合",

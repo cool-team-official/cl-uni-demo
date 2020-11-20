@@ -1,28 +1,20 @@
 <template>
 	<view class="demo-rules">
 		<!-- 消息提示 -->
-		<cl-message ref="message"></cl-message>
+		<cl-toast ref="toast"></cl-toast>
 
 		<cl-card label="表单">
 			<view class="row">
-				<cl-button @tap="setLabelAlign('left')">
-					<text>左对齐</text>
-				</cl-button>
-				<cl-button @tap="setLabelAlign('right')">
-					<text>右对齐</text>
-				</cl-button>
-				<cl-button @tap="setLabelAlign('top')">
-					<text>顶部对齐</text>
-				</cl-button>
+				<cl-button @tap="setLabelPosition('left')">左对齐</cl-button>
+				<cl-button @tap="setLabelPosition('right')">右对齐</cl-button>
+				<cl-button @tap="setLabelPosition('top')">顶部对齐</cl-button>
 			</view>
 
 			<view class="row">
-				<cl-button @tap="changeRule">
-					<text>{{ isRule ? "清空验证" : "还原验证" }}</text>
-				</cl-button>
-				<cl-button @tap="changeShowMessage">
-					<text>{{ showMessage ? "关闭错误提示" : "打开错误提示" }}</text>
-				</cl-button>
+				<cl-button @tap="changeRule">{{ isRule ? "清空验证" : "还原验证" }}</cl-button>
+				<cl-button @tap="changeShowMessage">{{
+					showMessage ? "关闭错误提示" : "打开错误提示"
+				}}</cl-button>
 			</view>
 
 			<!-- 表单 -->
@@ -84,12 +76,15 @@
 		</cl-card>
 
 		<view class="footer">
-			<cl-button type="primary" @tap="onSubmit">
-				<text>立即创建</text>
-			</cl-button>
-			<cl-button @tap="onReset">
-				<text>重置</text>
-			</cl-button>
+			<cl-row :gutter="20">
+				<cl-col :span="12">
+					<cl-button type="primary" fill @tap="onSubmit">立即创建</cl-button>
+				</cl-col>
+
+				<cl-col :span="12">
+					<cl-button fill @tap="onReset">重置</cl-button>
+				</cl-col>
+			</cl-row>
 		</view>
 	</view>
 </template>
@@ -178,7 +173,7 @@ export default {
 	},
 
 	methods: {
-		setLabelAlign(pos) {
+		setLabelPosition(pos) {
 			this.labelAlign = pos;
 		},
 		changeRule() {
@@ -194,13 +189,10 @@ export default {
 		onSubmit() {
 			this.$refs["form"].validate((valid, errors) => {
 				if (valid) {
-					this.$refs["message"].open({ message: "提交成功" });
+					this.$refs["toast"].open("提交成功");
 					console.log(this.form);
 				} else {
-					this.$refs["message"].open({
-						message: errors[0].message,
-						type: "cancel"
-					});
+					this.$refs["toast"].open(errors[0].message);
 				}
 			});
 		},
@@ -213,10 +205,9 @@ export default {
 
 <style lang="scss" scoped>
 .demo-rules {
-	padding-bottom: 120rpx;
+	padding-bottom: calc(90rpx + env(safe-area-inset-bottom));
 
 	.footer {
-		display: flex;
 		position: fixed;
 		bottom: 0;
 		left: 0;
@@ -226,11 +217,7 @@ export default {
 		padding: 10rpx 20rpx;
 		box-sizing: border-box;
 		border-top: 1rpx solid #eee;
-		padding-bottom: env(safe-area-inset-bottom);
-
-		.cl-button {
-			flex: 1;
-		}
+		padding-bottom: calc(env(safe-area-inset-bottom) + 10rpx);
 	}
 }
 </style>

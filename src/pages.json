@@ -3,9 +3,7 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"app-plus": {
-					"titleNView": false
-				}
+				"navigationBarTitleText": ""
 			}
 		}
 	],
@@ -124,6 +122,18 @@
 					"style": {
 						"navigationBarTitleText": "Rules 校验"
 					}
+				},
+				{
+					"path": "input-number",
+					"style": {
+						"navigationBarTitleText": "InputNumber 计数器"
+					}
+				},
+				{
+					"path": "textarea",
+					"style": {
+						"navigationBarTitleText": "Textarea 文本域"
+					}
 				}
 			]
 		},
@@ -137,9 +147,15 @@
 					}
 				},
 				{
-					"path": "modal",
+					"path": "dialog",
 					"style": {
-						"navigationBarTitleText": "Modal 模态框"
+						"navigationBarTitleText": "Dialog 对话框"
+					}
+				},
+				{
+					"path": "confirm",
+					"style": {
+						"navigationBarTitleText": "Confirm 确认框"
 					}
 				},
 				{
@@ -162,13 +178,20 @@
 				{
 					"path": "tabs",
 					"style": {
-						"navigationBarTitleText": "Tabs 选项卡"
+						"navigationBarTitleText": "Tabs 选项卡",
+						"disableScroll": true
 					}
 				},
 				{
 					"path": "topbar",
 					"style": {
 						"navigationBarTitleText": "Topbar 顶部导航"
+					}
+				},
+				{
+					"path": "tabbar",
+					"style": {
+						"navigationBarTitleText": "Tabbar 底部导航"
 					}
 				}
 			]
@@ -198,6 +221,12 @@
 					"path": "list",
 					"style": {
 						"navigationBarTitleText": "List 列表"
+					}
+				},
+				{
+					"path": "card",
+					"style": {
+						"navigationBarTitleText": "Card 卡片"
 					}
 				}
 			]
@@ -267,13 +296,20 @@
 				{
 					"path": "list-index",
 					"style": {
-						"navigationBarTitleText": "List-Index 索引列表"
+						"navigationBarTitleText": "List-Index 索引列表",
+						"disableScroll": true
 					}
 				},
 				{
 					"path": "filter-bar",
 					"style": {
 						"navigationBarTitleText": "Filter-Bar 筛选栏"
+					}
+				},
+				{
+					"path": "captcha",
+					"style": {
+						"navigationBarTitleText": "Captcha 验证码输入框"
 					}
 				}
 			]

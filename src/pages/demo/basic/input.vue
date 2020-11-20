@@ -48,7 +48,7 @@
 					<view slot="prepend">
 						<cl-select v-model="val5" :options="options.city"></cl-select>
 					</view>
-					<cl-button type="primary" size="mini" slot="append">搜索</cl-button>
+					<cl-button type="success" size="mini" round slot="append">搜索关键字</cl-button>
 				</cl-input>
 			</view>
 		</cl-card>

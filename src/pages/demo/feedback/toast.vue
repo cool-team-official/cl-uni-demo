@@ -42,13 +42,13 @@
 		</cl-card>
 
 		<cl-card label="带图标">
-			<cl-button @tap="openIcon('success')">
+			<cl-button type="success" @tap="openIcon('success')">
 				<text>success</text>
 			</cl-button>
-			<cl-button @tap="openIcon('error')">
+			<cl-button type="error" @tap="openIcon('error')">
 				<text>error</text>
 			</cl-button>
-			<cl-button @tap="openIcon('warning')">
+			<cl-button type="warning" @tap="openIcon('warning')">
 				<text>warning</text>
 			</cl-button>
 		</cl-card>

@@ -57,6 +57,27 @@
 			></cl-progress>
 		</cl-card>
 
+		<cl-card label="操作">
+			<cl-countdown :hour="2" ref="op"></cl-countdown>
+
+			<cl-row :margin="[20, 0, 0, 0]">
+				<cl-button size="mini" type="success" round @tap="start">开始</cl-button>
+				<cl-button size="mini" type="error" round @tap="stop">暂停</cl-button>
+			</cl-row>
+		</cl-card>
+
+		<cl-card label="自定义样式">
+			<cl-countdown
+				:hour="2"
+				:number-style="{
+					'background-color': '#000',
+					color: '#fff',
+					margin: '0 10rpx',
+					'border-radius': '10rpx'
+				}"
+			></cl-countdown>
+		</cl-card>
+
 		<cl-toast ref="toast"></cl-toast>
 	</view>
 </template>
@@ -78,6 +99,14 @@ export default {
 		onDone() {
 			this.$refs["toast"].open("Game Over");
 			this.$refs["cd"].start({ second: 10 });
+		},
+
+		start() {
+			this.$refs.op.next();
+		},
+
+		stop() {
+			this.$refs.op.stop();
 		}
 	}
 };

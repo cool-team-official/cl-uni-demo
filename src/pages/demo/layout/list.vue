@@ -1,37 +1,28 @@
 <template>
 	<view class="demo-list">
-		<cl-card label="基础用法" padding="0">
+		<cl-card label="基础用法">
 			<cl-list-item label="账单"></cl-list-item>
 		</cl-card>
 
-		<cl-card label="带图标" padding="0">
+		<cl-card label="带图标">
 			<cl-list-item label="总资产">
 				<image slot="icon" :src="require('@/static/icon/all.png')" alt />
-				<text slot="append" class="cl-icon-arrow-right"></text>
 			</cl-list-item>
 		</cl-card>
 
-		<cl-card label="带描述" padding="0">
+		<cl-card label="带描述">
 			<cl-list-item label="余额">
-				<image slot="icon" :src="require('@/static/icon/balance.png')" alt />0.00元
-				<text slot="append" class="cl-icon-arrow-right"></text>
-			</cl-list-item>
-
-			<cl-list-item label="昨日收益">
-				<image slot="icon" :src="require('@/static/icon/stats.png')" alt />-264.08元
-				<text slot="append" class="cl-icon-arrow-right"></text>
+				<cl-text type="price" :size="30" :value="159.2"></cl-text>
 			</cl-list-item>
 		</cl-card>
 
-		<cl-card label="禁用" padding="0">
+		<cl-card label="禁用">
 			<cl-list-item label="银行卡" disabled>
-				<image slot="icon" :src="require('@/static/icon/bank-card.png')" alt />
 				<text>兴业银行(***1113)</text>
-				<text slot="append" class="cl-icon-arrow-right"></text>
 			</cl-list-item>
 		</cl-card>
 
-		<cl-card label="滑动" padding="0">
+		<cl-card label="滑动">
 			<cl-list-item label="右滑动" swipe="left">
 				<text slot="append" class="cl-icon-arrow-right"></text>
 
@@ -51,7 +42,7 @@
 			</cl-list-item>
 		</cl-card>
 
-		<cl-card label="自定义" padding="0">
+		<cl-card label="自定义">
 			<cl-list-item type="success">
 				<view class="cs-block">
 					<cl-avatar :src="avatarUrl"></cl-avatar>
@@ -109,17 +100,15 @@ export default {
 
 	.append {
 		display: flex;
-		align-items: center;
-		height: 100%;
 
 		.primary-btn,
 		.error-btn {
-			border-radius: 0;
-			height: 100rpx;
-			width: 130rpx;
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			border-radius: 0;
+			height: 100rpx;
+			width: 130rpx;
 			font-size: 26rpx;
 			color: #fff;
 			box-sizing: border-box;

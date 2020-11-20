@@ -1,15 +1,11 @@
 <template>
 	<view class="demo-popup">
-		<cl-card label="基本用法">
-			<cl-row v-for="(item, index) in dirs" :key="index">
-				<cl-popup :size="item.size" :visible.sync="item.visible" :direction="item.value">
-					<p class="f-26">{{ item.label }}</p>
-				</cl-popup>
+		<cl-card :label="item.label" v-for="(item, index) in dirs" :key="index">
+			<cl-popup :visible.sync="item.visible" :direction="item.value">
+				<p class="f-26">这是{{ item.label }}</p>
+			</cl-popup>
 
-				<cl-button @tap="openItem(item)">
-					<text>{{ item.label }}</text>
-				</cl-button>
-			</cl-row>
+			<cl-button @tap="openItem(item)">弹出</cl-button>
 		</cl-card>
 
 		<cl-card label="自定义内容">
@@ -23,7 +19,7 @@
 				@close="onClose"
 				@open="onOpen"
 			>
-				<cl-form>
+				<cl-form label-position="top">
 					<cl-form-item label="名称">
 						<cl-input placeholder="请填写名称" maxlength="11" type="text"> </cl-input>
 					</cl-form-item>
@@ -33,12 +29,14 @@
 				</cl-form>
 
 				<view class="footer">
-					<cl-button @tap="close">
-						<text>取消</text>
-					</cl-button>
-					<cl-button type="primary" @tap="submit">
-						<text>提交</text>
-					</cl-button>
+					<cl-row :gutter="20">
+						<cl-col :span="12">
+							<cl-button fill round @tap="close">取消</cl-button>
+						</cl-col>
+						<cl-col :span="12">
+							<cl-button fill round type="primary" @tap="submit">提交</cl-button>
+						</cl-col>
+					</cl-row>
 				</view>
 			</cl-popup>
 
@@ -58,32 +56,27 @@ export default {
 				{
 					label: "顶部弹出",
 					value: "top",
-					visible: false,
-					size: "auto"
+					visible: false
 				},
 				{
 					label: "右侧弹出",
 					value: "right",
-					visible: false,
-					size: "auto"
+					visible: false
 				},
 				{
 					label: "底部弹出",
 					value: "bottom",
-					visible: false,
-					size: "auto"
+					visible: false
 				},
 				{
 					label: "左侧弹出",
 					value: "left",
-					visible: false,
-					size: "auto"
+					visible: false
 				},
 				{
 					label: "中间弹出",
 					value: "center",
-					visible: false,
-					size: "auto"
+					visible: false
 				}
 			]
 		};
@@ -95,7 +88,6 @@ export default {
 		},
 		open() {
 			// this.$refs["popup"].open();
-			console.log(11);
 			this.visible = true;
 		},
 		close() {
@@ -132,8 +124,6 @@ export default {
 	.footer {
 		margin-top: 20rpx;
 		margin-bottom: 20rpx;
-		display: flex;
-		justify-content: flex-end;
 	}
 }
 </style>

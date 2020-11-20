@@ -2513,10 +2513,10 @@ cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.3:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
 
-cl-uni@^0.5.5:
-  version "0.5.5"
-  resolved "https://registry.yarnpkg.com/cl-uni/-/cl-uni-0.5.5.tgz#d7aeb401eb534369a16ac31500c2e7bac52c0f0f"
-  integrity sha512-shZvjLTgR3LfYK+curlh2IOs/tZ0Qry2K0DEUhRNmRWihUBsYbsJr0VYHMe4418SCim8/DhxuNeIwEW2gajBOw==
+cl-uni@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.npm.taobao.org/cl-uni/download/cl-uni-1.0.5.tgz#39d44a4843930709d06ec8330e654df9f56112f0"
+  integrity sha1-OdRKSEOTBwnQbsgzDmVN+fVhEvA=
 
 class-utils@^0.3.5:
   version "0.3.6"
@@ -8531,6 +8531,11 @@ uuid@^3.3.2, uuid@^3.4.0:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
   integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
+
+uview-ui@^1.8.1:
+  version "1.8.1"
+  resolved "https://registry.npm.taobao.org/uview-ui/download/uview-ui-1.8.1.tgz#1d578c9b1d9f56c4ddb485c580fe3aebda454f24"
+  integrity sha1-HVeMmx2fVsTdtIXFgP4669pFTyQ=
 
 validate-npm-package-license@^3.0.1:
   version "3.0.4"

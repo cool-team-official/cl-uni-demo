@@ -1,6 +1,6 @@
 <template>
 	<view class="demo-checkbox">
-		<!-- <cl-card label="基础用法">
+		<cl-card label="基础用法">
 			<cl-checkbox v-model="form.a">复选项</cl-checkbox>
 		</cl-card>
 
@@ -15,7 +15,7 @@
 				<cl-checkbox label="2">复选项 B</cl-checkbox>
 				<cl-checkbox label="3">复选项 C</cl-checkbox>
 			</cl-checkbox-group>
-		</cl-card> -->
+		</cl-card>
 
 		<cl-card label="带边框">
 			<cl-checkbox-group v-model="form.d" border>

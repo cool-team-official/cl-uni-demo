@@ -1,75 +1,96 @@
 <template>
 	<view class="demo-tabs">
-		<!-- #ifndef MP -->
-		<cl-tabs v-model="tabIndex" type="swiper" lazy :labels="labels">
-			<template v-slot="{ index }">
-				<cl-list>
-					<cl-list-item
-						:label="`${item}`"
-						class="block"
-						v-for="item in list[index]"
-						:key="item"
-					>
-						<cl-icon name="cl-icon-arrow-right"></cl-icon>
-					</cl-list-item>
-				</cl-list>
-			</template>
-		</cl-tabs>
-		<!-- #endif -->
-
-		<!-- #ifdef MP -->
-		<cl-tabs v-model="tabIndex" lazy>
+		<cl-tabs v-model="tabIndex" swipeable>
 			<cl-tab-pane
-				v-for="(item, index) in labels"
+				v-for="(item, index) in list"
 				:key="index"
-				:label="item.label"
 				:name="index"
+				:label="item.label"
+				:refresher-enabled="item.refresherEnabled"
+				@pull-refresh="onPullRefresh(item, $event)"
+				@loadmore="onLoadmore(item)"
 			>
 				<cl-list>
 					<cl-list-item
-						v-for="(item2, index2) in list[index]"
+						v-for="(item2, index2) in item.children"
 						:key="index2"
-						:label="`${item2}`"
+						:label="`${item.label} - ${item2}`"
 					>
 						<cl-icon name="cl-icon-arrow-right"></cl-icon>
 					</cl-list-item>
 				</cl-list>
 			</cl-tab-pane>
 		</cl-tabs>
-		<!-- #endif -->
 	</view>
 </template>
 
 <script>
+import Test from "@/components/test";
+
 export default {
+	components: {
+		Test
+	},
+
 	data() {
 		return {
-			tabIndex: 1,
-			labels: [
+			tabIndex: 0,
+			list: [
 				{
-					label: "A"
+					label: "抖音视频",
+					refresherEnabled: true
 				},
 				{
-					label: "B"
+					label: "热点"
 				},
 				{
-					label: "C"
+					label: "直播"
 				},
 				{
-					label: "D"
+					label: "图片",
+					"suffix-icon": "cl-icon-image"
 				},
 				{
-					label: "E"
+					label: "科技"
 				},
 				{
-					label: "F"
+					label: "娱乐"
 				},
 				{
-					label: "G"
+					label: "游戏"
+				},
+				{
+					label: "体育"
+				},
+				{
+					label: "财经"
+				},
+				{
+					label: "数码"
 				}
-			],
-			list: new Array(7).fill(1).map(() => parseInt(Math.random() * 10) + 10)
+			]
 		};
+	},
+
+	created() {
+		this.list.map((e, i) => {
+			this.$set(e, "children", this.rdList(15));
+		});
+	},
+
+	methods: {
+		rdList(n) {
+			return new Array(n).fill(1).map(() => parseInt(Math.random() * 100));
+		},
+
+		onPullRefresh(item, { done }) {
+			item.children = this.rdList(15);
+			done();
+		},
+
+		onLoadmore(item) {
+			item.children.push(...this.rdList(10));
+		}
 	}
 };
 </script>

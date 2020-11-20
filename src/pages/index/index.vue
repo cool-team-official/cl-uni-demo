@@ -118,6 +118,14 @@ export default {
 						{
 							label: "Rules 校验",
 							path: "rules"
+						},
+						{
+							label: "InputNumber 计数器",
+							path: "input-number"
+						},
+						{
+							label: "Textarea 文本域",
+							path: "textarea"
 						}
 					]
 				},
@@ -133,8 +141,12 @@ export default {
 							label: "Steps 步骤"
 						},
 						{
-							label: "Modal 模态框",
-							path: "modal"
+							label: "Dialog 对话框",
+							path: "dialog"
+						},
+						{
+							label: "Confirm 确认框",
+							path: "confirm"
 						},
 						{
 							label: "ActionSheet 底部菜单",
@@ -158,11 +170,12 @@ export default {
 							path: "tabs"
 						},
 						{
-							label: "BottomBar 底部导航"
+							label: "Topbar 顶部导航",
+							path: "topbar"
 						},
 						{
-							label: "TopBar 顶部导航",
-							path: "topbar"
+							label: "Tabbar 底部导航",
+							path: "tabbar"
 						}
 					]
 				},
@@ -185,6 +198,10 @@ export default {
 						{
 							label: "List 列表",
 							path: "list"
+						},
+						{
+							label: "Card 卡片",
+							path: "card"
 						}
 					]
 				},
@@ -239,7 +256,8 @@ export default {
 							path: "filter-bar"
 						},
 						{
-							label: "Ceiling 吸顶"
+							label: "Captcha 验证码输入框",
+							path: "captcha"
 						},
 						{
 							label: "Drag 拖动排序"

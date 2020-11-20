@@ -1,29 +1,36 @@
 <template>
 	<view class="demo-avatar">
 		<cl-card label="头像形状">
-			<cl-row type="flex">
-				<cl-avatar></cl-avatar>
+			<cl-row>
+				<cl-col :span="6">
+					<cl-avatar></cl-avatar>
+				</cl-col>
 
-				<cl-avatar shape="square"></cl-avatar>
+				<cl-col :span="6">
+					<cl-avatar shape="square"></cl-avatar>
+				</cl-col>
 			</cl-row>
 		</cl-card>
 
 		<cl-card label="头像大小">
-			<cl-row type="flex">
-				<cl-avatar :size="70"></cl-avatar>
-
-				<cl-avatar :size="80"></cl-avatar>
-
-				<cl-avatar :size="90"></cl-avatar>
-
-				<cl-avatar :size="100"></cl-avatar>
+			<cl-row>
+				<cl-col :span="6">
+					<cl-avatar :size="70"></cl-avatar>
+				</cl-col>
+				<cl-col :span="6">
+					<cl-avatar :size="80"></cl-avatar>
+				</cl-col>
+				<cl-col :span="6">
+					<cl-avatar :size="90"></cl-avatar>
+				</cl-col>
+				<cl-col :span="6">
+					<cl-avatar :size="100"></cl-avatar>
+				</cl-col>
 			</cl-row>
 		</cl-card>
 
 		<cl-card label="文字头像">
-			<cl-row type="flex">
-				<cl-avatar :size="70">cool</cl-avatar>
-			</cl-row>
+			<cl-avatar :size="70">cool</cl-avatar>
 		</cl-card>
 
 		<cl-card label="头像组">
@@ -47,10 +54,5 @@ export default {
 
 <style lang="scss" scoped>
 .demo-avatar {
-	.cl-row {
-		/deep/.cl-avatar {
-			margin: 0 20rpx;
-		}
-	}
 }
 </style>

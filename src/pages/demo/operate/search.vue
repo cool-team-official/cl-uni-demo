@@ -2,7 +2,7 @@
 	<view class="demo-search">
 		<cl-toast ref="cl-toast"></cl-toast>
 
-		<cl-card label="默认" padding="0">
+		<cl-card label="默认">
 			<cl-search
 				v-model="val1"
 				placeholder="搜索图片、文章、链接"
@@ -11,7 +11,7 @@
 			</cl-search>
 		</cl-card>
 
-		<cl-card label="后缀" padding="0">
+		<cl-card label="后缀">
 			<cl-search
 				v-model="val2"
 				placeholder="搜索图片、文章、链接"
@@ -25,7 +25,7 @@
 			</cl-search>
 		</cl-card>
 
-		<cl-card label="前缀" padding="0">
+		<cl-card label="前缀">
 			<cl-search
 				v-model="val3"
 				placeholder="搜索图片、文章、链接"
@@ -40,7 +40,7 @@
 			</cl-search>
 		</cl-card>
 
-		<cl-card label="自定义搜索" padding="0">
+		<cl-card label="自定义搜索">
 			<cl-search
 				v-model="val4"
 				placeholder="搜索图片、文章、链接"
