@@ -205,11 +205,11 @@ export default {
 			// 填充低色
 			// ctx.setFillStyle(this.backgroundColor);
 			// 设置大小
-			ctx.fillRect(0, 0, w + x, h + y);
+			ctx.fillRect(0, 0, w, h);
 			ctx.save();
 			// 旋转
 			// 绘图
-			ctx.drawImage(url, left, top, w, h);
+			ctx.drawImage(url, left - x, top - y, w, h);
 			ctx.restore();
 
 			ctx.draw(false, () => {
@@ -222,10 +222,8 @@ export default {
 				uni.canvasToTempFilePath(
 					{
 						canvasId: "canvas",
-						x,
-						y,
-						destWidth,
-						destHeight,
+						destWidth: 200,
+						destHeight: 200,
 						success: res => {
 							uni.hideLoading();
 
@@ -398,7 +396,6 @@ export default {
 		top: -9999px;
 		left: -9999px;
 		z-index: -998;
-		background-color: transparent;
 	}
 }
 </style>
