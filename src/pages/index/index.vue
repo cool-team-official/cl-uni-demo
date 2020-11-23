@@ -263,7 +263,8 @@ export default {
 							label: "Drag 拖动排序"
 						},
 						{
-							label: "Crop 图片裁剪"
+							label: "Cropper 图片裁剪"
+							// path: "cropper"
 						},
 						{
 							label: "Ticket 优惠券"

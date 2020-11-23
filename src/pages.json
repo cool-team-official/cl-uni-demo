@@ -311,6 +311,12 @@
 					"style": {
 						"navigationBarTitleText": "Captcha 验证码输入框"
 					}
+				},
+				{
+					"path": "cropper",
+					"style": {
+						"navigationBarTitleText": "Cropper 图片裁剪"
+					}
 				}
 			]
 		}
