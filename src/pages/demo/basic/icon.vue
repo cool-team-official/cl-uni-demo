@@ -19,6 +19,10 @@ export default {
 		return {
 			list: [
 				{
+					label: "rotate",
+					value: "cl-icon-rotate"
+				},
+				{
 					label: "notification",
 					value: "cl-icon-notification"
 				},
@@ -93,10 +97,6 @@ export default {
 				{
 					label: "check",
 					value: "cl-icon-check"
-				},
-				{
-					label: "image",
-					value: "cl-icon-image"
 				},
 				{
 					label: "close",
