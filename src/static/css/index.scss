@@ -31,3 +31,9 @@
 		display: none !important;
 	}
 }
+
+body::-webkit-scrollbar {
+	width: 0 !important;
+	-ms-overflow-style: none;
+	overflow: -moz-scrollbars-none;
+}
