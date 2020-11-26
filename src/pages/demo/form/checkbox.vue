@@ -4,6 +4,10 @@
 			<cl-checkbox v-model="form.a">复选项</cl-checkbox>
 		</cl-card>
 
+		<cl-card label="圆形">
+			<cl-checkbox label="1" round>复选项 A</cl-checkbox>
+		</cl-card>
+
 		<cl-card label="禁用状态">
 			<cl-checkbox v-model="form.b" disabled>复选项</cl-checkbox>
 			<cl-checkbox v-model="form.b1" disabled>复选项</cl-checkbox>

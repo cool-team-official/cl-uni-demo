@@ -24,6 +24,10 @@
 			<cl-countdown :hour="1" :minute="0" :second="5" mode="simple"></cl-countdown>
 		</cl-card>
 
+		<cl-card label="添加毫秒">
+			<cl-countdown :hour="1" :splitor="[':', ':', ':', ':']" is-millisecond></cl-countdown>
+		</cl-card>
+
 		<cl-card label="只显示分秒">
 			<cl-countdown
 				datetime="2020-12-31"
