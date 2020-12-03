@@ -1,11 +1,11 @@
 <template>
 	<view class="demo-icon">
 		<cl-card label="图标">
-			<cl-row>
+			<cl-row :gutter="20">
 				<cl-col span="8" v-for="(item, index) in list" :key="index">
 					<view class="block">
-						<cl-icon :name="item.value" :size="44"></cl-icon>
-						<text class="label">{{ item.label }}</text>
+						<cl-icon :name="item" :size="44"></cl-icon>
+						<text class="label">cl-icon-{{ item }}</text>
 					</view>
 				</cl-col>
 			</cl-row>
@@ -18,118 +18,80 @@ export default {
 	data() {
 		return {
 			list: [
-				{
-					label: "rotate",
-					value: "cl-icon-rotate"
-				},
-				{
-					label: "notification",
-					value: "cl-icon-notification"
-				},
-				{
-					label: "notification-fill",
-					value: "cl-icon-notification-fill"
-				},
-				{
-					label: "info",
-					value: "cl-icon-info"
-				},
-				{
-					label: "info-fill",
-					value: "cl-icon-info-fill"
-				},
-				{
-					label: "arrow-top",
-					value: "cl-icon-arrow-top"
-				},
-				{
-					label: "arrow-right",
-					value: "cl-icon-arrow-right"
-				},
-				{
-					label: "arrow-bottom",
-					value: "cl-icon-arrow-bottom"
-				},
-				{
-					label: "arrow-left",
-					value: "cl-icon-arrow-left"
-				},
-				{
-					label: "question",
-					value: "cl-icon-question"
-				},
-				{
-					label: "question-fill",
-					value: "cl-icon-question-fill"
-				},
-				{
-					label: "toast-waiting",
-					value: "cl-icon-toast-waiting"
-				},
-				{
-					label: "toast-warning",
-					value: "cl-icon-toast-warning"
-				},
-				{
-					label: "toast-success",
-					value: "cl-icon-toast-success"
-				},
-				{
-					label: "toast-error",
-					value: "cl-icon-toast-error"
-				},
-				{
-					label: "avatar",
-					value: "cl-icon-avatar"
-				},
-				{
-					label: "plus",
-					value: "cl-icon-plus"
-				},
-				{
-					label: "minus",
-					value: "cl-icon-minus"
-				},
-				{
-					label: "image",
-					value: "cl-icon-image"
-				},
-				{
-					label: "check",
-					value: "cl-icon-check"
-				},
-				{
-					label: "close",
-					value: "cl-icon-close"
-				},
-				{
-					label: "emoji",
-					value: "cl-icon-emoji"
-				},
-				{
-					label: "favor-fill",
-					value: "cl-icon-favor-fill"
-				},
-				{
-					label: "round-check",
-					value: "cl-icon-round-check"
-				},
-				{
-					label: "round-check-fill",
-					value: "cl-icon-round-check-fill"
-				},
-				{
-					label: "round-close",
-					value: "cl-icon-round-close"
-				},
-				{
-					label: "round-close-fill",
-					value: "cl-icon-round-close-fill"
-				},
-				{
-					label: "search",
-					value: "cl-icon-search"
-				}
+				"refresh",
+				"search",
+				"check",
+				"close",
+				"plus",
+				"minus",
+				"plus-border",
+				"minus-border",
+				"check-border",
+				"close-border",
+				"help-border",
+				"warning-border",
+				"wait-border",
+				"meh-border",
+				"cry-border",
+				"smile-border",
+				"back-top",
+				"calendar",
+				"customer-service",
+				"scan",
+				"pay",
+				"stop",
+				"play",
+				"more",
+				"map",
+				"keyboard-9",
+				"keyboard-26",
+				"edit",
+				"chart-bar",
+				"chart-pie",
+				"cloud-upload",
+				"cloud-download",
+				"eye-open",
+				"eye-close",
+				"like",
+				"my",
+				"friend",
+				"set",
+				"arrow-top",
+				"arrow-bottom",
+				"arrow-left",
+				"arrow-double-left",
+				"arrow-right",
+				"arrow-double-right",
+				"top",
+				"upgrade",
+				"rise",
+				"decline",
+				"active",
+				"fullscreen",
+				"enlarge",
+				"shrink",
+				"cropper",
+				"share",
+				"link",
+				"back",
+				"enter",
+				"notification",
+				"toast-waiting",
+				"toast-success",
+				"toast-error",
+				"toast-warning",
+				"caret-bottom",
+				"caret-top",
+				"clock-fill",
+				"favor-fill",
+				"success-fill",
+				"delete-fill",
+				"smile-fill",
+				"meh-fill",
+				"cry-fill",
+				"like-fill",
+				"history-fill",
+				"map-fill"
 			]
 		};
 	}
@@ -139,18 +101,18 @@ export default {
 <style lang="scss">
 .demo-icon {
 	.block {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		height: 160rpx;
+		text-align: center;
+		box-sizing: border-box;
+		height: 180rpx;
+		padding-top: 40rpx;
 
 		&:active {
 			background-color: #eee;
 		}
 
 		.label {
-			font-size: 24rpx;
+			display: block;
+			font-size: 22rpx;
 			margin-top: 10rpx;
 		}
 	}
