@@ -1,13 +1,17 @@
 {
-	"pages": [{
-		"path": "pages/index/index",
-		"style": {
-			"navigationBarTitleText": ""
+	"pages": [
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": ""
+			}
 		}
-	}],
-	"subPackages": [{
+	],
+	"subPackages": [
+		{
 			"root": "pages/demo/basic",
-			"pages": [{
+			"pages": [
+				{
 					"path": "text",
 					"style": {
 						"navigationBarTitleText": "Text 文本"
@@ -53,7 +57,8 @@
 		},
 		{
 			"root": "pages/demo/feedback",
-			"pages": [{
+			"pages": [
+				{
 					"path": "toast",
 					"style": {
 						"navigationBarTitleText": "Toast 提示"
@@ -75,7 +80,8 @@
 		},
 		{
 			"root": "pages/demo/form",
-			"pages": [{
+			"pages": [
+				{
 					"path": "radio",
 					"style": {
 						"navigationBarTitleText": "Radio 单选框"
@@ -97,6 +103,12 @@
 					"path": "select",
 					"style": {
 						"navigationBarTitleText": "Select 下拉框"
+					}
+				},
+				{
+					"path": "select-region",
+					"style": {
+						"navigationBarTitleText": "SelectRegion 下拉城市"
 					}
 				},
 				{
@@ -133,7 +145,8 @@
 		},
 		{
 			"root": "pages/demo/operate",
-			"pages": [{
+			"pages": [
+				{
 					"path": "loadmore",
 					"style": {
 						"navigationBarTitleText": "LoadMore 页底提示"
@@ -167,7 +180,8 @@
 		},
 		{
 			"root": "pages/demo/nav",
-			"pages": [{
+			"pages": [
+				{
 					"path": "tabs",
 					"style": {
 						"navigationBarTitleText": "Tabs 选项卡",
@@ -190,7 +204,8 @@
 		},
 		{
 			"root": "pages/demo/layout",
-			"pages": [{
+			"pages": [
+				{
 					"path": "flex",
 					"style": {
 						"navigationBarTitleText": "Flex 布局"
@@ -224,7 +239,8 @@
 		},
 		{
 			"root": "pages/demo/view",
-			"pages": [{
+			"pages": [
+				{
 					"path": "popup",
 					"style": {
 						"navigationBarTitleText": "Popup 弹出层"
@@ -282,7 +298,8 @@
 		},
 		{
 			"root": "pages/demo/advanced",
-			"pages": [{
+			"pages": [
+				{
 					"path": "list-index",
 					"style": {
 						"navigationBarTitleText": "List-Index 索引列表",

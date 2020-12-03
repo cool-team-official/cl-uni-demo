@@ -108,6 +108,10 @@ export default {
 							path: "select"
 						},
 						{
+							label: "SelectRegion 下拉城市",
+							path: "select-region"
+						},
+						{
 							label: "Upload 上传",
 							path: "upload"
 						},
