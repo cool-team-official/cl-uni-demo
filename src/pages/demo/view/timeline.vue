@@ -39,7 +39,7 @@ export default {
 					timestamp: "2020-11-09 16:21",
 					content: "收益到账",
 					showLine: true,
-					icon: "cl-icon-round-check-fill",
+					icon: "cl-icon-check-border",
 					color: "#67C23A"
 				}
 			]

@@ -12,11 +12,11 @@
 
 		<cl-card label="不同图标">
 			<view class="row">
-				<cl-rate :value="1" icon="cl-icon-emoji"></cl-rate>
+				<cl-rate :value="1" icon="like"></cl-rate>
 			</view>
 
 			<view class="row">
-				<cl-rate :value="3" icon="cl-icon-avatar"></cl-rate>
+				<cl-rate :value="3" icon="success-fill"></cl-rate>
 			</view>
 		</cl-card>
 

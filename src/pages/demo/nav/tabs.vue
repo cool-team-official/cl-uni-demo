@@ -1,6 +1,6 @@
 <template>
 	<view class="demo-tabs">
-		<cl-tabs v-model="tabIndex" swipeable>
+		<cl-tabs v-model="tabIndex" swipeable color="red">
 			<cl-tab-pane
 				v-for="(item, index) in list"
 				:key="index"
@@ -10,15 +10,17 @@
 				@pull-refresh="onPullRefresh(item, $event)"
 				@loadmore="onLoadmore(item)"
 			>
-				<cl-list>
-					<cl-list-item
-						v-for="(item2, index2) in item.children"
-						:key="index2"
-						:label="`${item.label} - ${item2}`"
-					>
-						<cl-icon name="cl-icon-arrow-right"></cl-icon>
-					</cl-list-item>
-				</cl-list>
+				<view class="list">
+					<cl-list>
+						<cl-list-item
+							v-for="(item2, index2) in item.children"
+							:key="index2"
+							:label="`${item.label} - ${item2}`"
+						>
+							<cl-icon name="cl-icon-arrow-right"></cl-icon>
+						</cl-list-item>
+					</cl-list>
+				</view>
 			</cl-tab-pane>
 		</cl-tabs>
 	</view>
@@ -102,5 +104,18 @@ page {
 .demo-tabs {
 	height: 100%;
 	overflow: hidden;
+
+	/deep/.cl-tabs__container {
+		background-color: #f7f7f7;
+	}
+
+	.list {
+		padding: 20rpx;
+
+		/deep/.cl-list-item {
+			margin-bottom: 20rpx;
+			border-radius: 10rpx;
+		}
+	}
 }
 </style>

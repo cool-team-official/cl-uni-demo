@@ -22,6 +22,18 @@
 			<cl-text type="price" :size="40" value="19450"></cl-text>
 		</cl-card>
 
+		<cl-card label="下划线">
+			<cl-text underline value="https://uni.cool-js.com" @tap="toLink"></cl-text>
+		</cl-card>
+
+		<cl-card label="前缀图标">
+			<cl-text prefix-icon="help-border" value="有哪些小众又高级的礼物?"></cl-text>
+		</cl-card>
+
+		<cl-card label="后缀图标">
+			<cl-text suffix-icon="smile-fill" value="君远隔重楼，北望愿相逢"></cl-text>
+		</cl-card>
+
 		<cl-card label="超出隐藏">
 			<cl-text
 				:ellipsis="2"
@@ -33,11 +45,19 @@
 </template>
 
 <script>
-export default {};
+export default {
+	methods: {
+		toLink() {
+			location.href = "https://uni.cool-js.com";
+		}
+	}
+};
 </script>
 
 <style lang="scss" scoped>
 .demo-text {
+	padding-bottom: env(safe-area-inset-bottom);
+
 	.color {
 		/deep/.cl-text {
 			margin-right: 20rpx;

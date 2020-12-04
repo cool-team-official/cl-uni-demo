@@ -1,7 +1,7 @@
 <template>
 	<view class="demo-input">
 		<cl-card label="基础用法">
-			<cl-input v-model="val1" placeholder="请输入内容"></cl-input>
+			<cl-input placeholder="请输入内容"></cl-input>
 		</cl-card>
 
 		<cl-card label="禁用状态">
@@ -9,7 +9,11 @@
 		</cl-card>
 
 		<cl-card label="可清空">
-			<cl-input v-model="val2" placeholder="请输入内容" clearable></cl-input>
+			<cl-input placeholder="请输入内容" clearable></cl-input>
+		</cl-card>
+
+		<cl-card label="圆角">
+			<cl-input placeholder="请输入内容" round></cl-input>
 		</cl-card>
 
 		<cl-card label="带icon">
@@ -18,15 +22,12 @@
 					v-model="val3"
 					placeholder="请输入内容"
 					prefix-icon="cl-icon-search"
+					@prefix-icon-tap="onPrefixIconTap"
 				></cl-input>
 			</view>
 
 			<view class="row">
-				<cl-input
-					v-model="val4"
-					placeholder="请输入内容"
-					suffix-icon="cl-icon-image"
-				></cl-input>
+				<cl-input placeholder="请输入内容" suffix-icon="cl-icon-image"></cl-input>
 			</view>
 		</cl-card>
 
@@ -52,6 +53,8 @@
 				</cl-input>
 			</view>
 		</cl-card>
+
+		<cl-toast ref="toast"></cl-toast>
 	</view>
 </template>
 
@@ -81,6 +84,12 @@ export default {
 				]
 			}
 		};
+	},
+
+	methods: {
+		onPrefixIconTap(val) {
+			this.$refs["toast"].open("输入" + val);
+		}
 	}
 };
 </script>
