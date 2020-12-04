@@ -1,6 +1,6 @@
 <template>
 	<view class="demo-tabs">
-		<cl-tabs v-model="tabIndex" swipeable color="red">
+		<cl-tabs v-model="tabIndex" swipeable>
 			<cl-tab-pane
 				v-for="(item, index) in list"
 				:key="index"
