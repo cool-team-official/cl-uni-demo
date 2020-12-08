@@ -15,7 +15,7 @@
 <script>
 import Canvas from "cl-uni/utils/canvas";
 
-const { screenWidth } = uni.getSystemInfoSync();
+const { windowWidth } = uni.getSystemInfoSync();
 
 export default {
 	data() {
@@ -30,14 +30,14 @@ export default {
 				x: 10,
 				y: 10,
 				height: 120,
-				width: screenWidth - 20,
+				width: windowWidth - 20,
 				radius: 5,
 				backgroundColor: "#fff"
 			})
 			.text({
 				x: 130,
 				y: 43,
-				width: screenWidth - 150,
+				width: windowWidth - 150,
 				overflow: "ellipsis",
 				lineClamp: 5,
 				text: `我要把你揉进我怀里 把你做进我梦里 然后靠一个吻 缝补这距离 捱过无能为力的年纪 我一定要拥有你 是我最亲爱的你 给你一整首情诗 关于你温暖名字 在每个孑然的深夜为你诵读 字句真诚而坚固 星辰也为你祝福 一想你 `
