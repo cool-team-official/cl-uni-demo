@@ -2513,10 +2513,10 @@ cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.3:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
 
-cl-uni@^1.1.9:
-  version "1.1.9"
-  resolved "https://registry.npm.taobao.org/cl-uni/download/cl-uni-1.1.9.tgz#6efe142bd3fc11fc885772f10b392c2e5a06597a"
-  integrity sha1-bv4UK9P8EfyIV3LxCzksLloGWXo=
+cl-uni@^1.1.10:
+  version "1.1.10"
+  resolved "https://registry.npm.taobao.org/cl-uni/download/cl-uni-1.1.10.tgz#f6217e1eb01539f73ba39754c1ea49cb6e7f1009"
+  integrity sha1-9iF+HrAVOfc7o5dUwepJy25/EAk=
 
 class-utils@^0.3.5:
   version "0.3.6"

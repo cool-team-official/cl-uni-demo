@@ -329,6 +329,12 @@
 					"style": {
 						"navigationBarTitleText": "Calendar 日历"
 					}
+				},
+				{
+					"path": "canvas",
+					"style": {
+						"navigationBarTitleText": "Canvas 画布"
+					}
 				}
 			]
 		}

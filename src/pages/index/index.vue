@@ -267,6 +267,10 @@ export default {
 							label: "Drag 拖动排序"
 						},
 						{
+							label: "Canvas 画布",
+							path: "canvas"
+						},
+						{
 							label: "Cropper 图片裁剪",
 							path: "cropper"
 						},

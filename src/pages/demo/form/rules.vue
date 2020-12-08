@@ -104,18 +104,36 @@ export default {
 				cover: ""
 			},
 			rules: {
-				name: {
-					required: true,
-					message: "活动名称不能为空"
-				},
+				name: [
+					{
+						required: true,
+						message: "活动名称不能为空"
+					},
+					{
+						min: 3,
+						message: "必须在3个字符以上"
+					}
+				],
 				region: {
 					required: true,
 					message: "活动地区不能为空"
 				},
-				date: {
-					required: true,
-					message: "活动时间不能为空"
-				}
+				date: [
+					{
+						required: true,
+						message: "活动时间不能为空"
+					},
+					{
+						validator(rule, value, callback) {
+							let d = new Date(value);
+							if (d.getMonth() < 11) {
+								callback(new Error("请选择12月"));
+							} else {
+								callback();
+							}
+						}
+					}
+				]
 			},
 			options: {
 				type: [
@@ -188,6 +206,8 @@ export default {
 		},
 		onSubmit() {
 			this.$refs["form"].validate((valid, errors) => {
+				console.log(valid);
+
 				if (valid) {
 					this.$refs["toast"].open("提交成功");
 					console.log(this.form);
