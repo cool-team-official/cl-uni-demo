@@ -335,6 +335,12 @@
 					"style": {
 						"navigationBarTitleText": "Canvas 画布"
 					}
+				},
+				{
+					"path": "guide",
+					"style": {
+						"navigationBarTitleText": "Guide 操作引导"
+					}
 				}
 			]
 		}

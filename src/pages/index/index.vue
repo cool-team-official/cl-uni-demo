@@ -278,7 +278,8 @@ export default {
 							label: "Ticket 优惠券"
 						},
 						{
-							label: "Guide 操作引导"
+							label: "Guide 操作引导",
+							path: "guide"
 						},
 						{
 							label: "RichText 富文本"
