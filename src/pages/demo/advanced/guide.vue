@@ -1,8 +1,8 @@
 <template>
-	<cl-guide ref="guide" :steps="steps" @change="onChange" @done="onDone" @skip="onSkip">
+	<cl-guide ref="guide" mode="darken" @change="onChange" @done="onDone" @skip="onSkip">
 		<view class="demo-step-guide">
 			<view class="row">
-				<text class="text">文字</text>
+				<text class="text" @tap="toast">文字</text>
 			</view>
 
 			<view class="row">
@@ -47,7 +47,13 @@ export default {
 					style: {
 						"border-radius": "100rpx"
 					},
-					content: "如果page有设置颜色,底色无法取消.则可以自定义样式修改圆角"
+					content: "如果page有设置颜色,底色无法取消.则可以自定义样式修改圆角",
+					onClick({ next }) {
+						next();
+					},
+					onNext({ step, current, next, prev, skip, done }) {
+						next();
+					}
 				},
 				{
 					selector: ".component",
@@ -72,7 +78,8 @@ export default {
 	},
 
 	mounted() {
-		this.$refs["guide"].open();
+		this.$refs["guide"].defineSteps(this.steps);
+		this.$refs["guide"].start();
 	},
 
 	methods: {
@@ -86,6 +93,10 @@ export default {
 
 		onSkip(index) {
 			console.log("skip", index);
+		},
+
+		toast() {
+			console.log("toast");
 		}
 	}
 };
