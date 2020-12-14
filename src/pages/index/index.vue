@@ -289,7 +289,8 @@ export default {
 							path: "list-index"
 						},
 						{
-							label: "Calendar 日历"
+							label: "Calendar 日历",
+							path: "calendar"
 						}
 					]
 				}
