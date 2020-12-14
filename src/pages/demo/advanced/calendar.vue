@@ -21,45 +21,50 @@
 		<cl-card label="自定义块">
 			<cl-button @tap="open4">打开</cl-button>
 			<cl-text :margin="[0, 0, 0, 20]" :value="date3"></cl-text>
-			<cl-calendar ref="calendar4" lunar v-model="date3" :custom-list="[
+			<cl-calendar
+				ref="calendar4"
+				lunar
+				v-model="date3"
+				:custom-list="[
 					{
 						date: '2020-11-27',
 						color: 'red',
 						remark: '我们',
 						value: '敏'
 					}
-				]" />
+				]"
+			/>
 		</cl-card>
 	</view>
 </template>
 
 <script>
-	export default {
-		data() {
-			return {
-				date: "",
-				date2: "2020-06-06",
-				date3: "2020-11-27",
-				daterange: ["2020-12-01", "2021-01-01"]
-			};
+export default {
+	data() {
+		return {
+			date: "",
+			date2: "2020-06-06",
+			date3: "2020-11-27",
+			daterange: ["2020-12-01", "2021-01-01"]
+		};
+	},
+
+	methods: {
+		open() {
+			this.$refs.calendar.open();
 		},
 
-		methods: {
-			open() {
-				this.$refs.calendar.open();
-			},
+		open2() {
+			this.$refs.calendar2.open();
+		},
 
-			open2() {
-				this.$refs.calendar2.open();
-			},
+		open3() {
+			this.$refs.calendar3.open();
+		},
 
-			open3() {
-				this.$refs.calendar3.open();
-			},
-
-			open4() {
-				this.$refs.calendar4.open();
-			}
+		open4() {
+			this.$refs.calendar4.open();
 		}
-	};
+	}
+};
 </script>
