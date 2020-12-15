@@ -2513,10 +2513,10 @@ cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.3:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
 
-cl-uni@^1.3.3:
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/cl-uni/-/cl-uni-1.3.3.tgz#0179f0d48b3f7e51581762b26dbf7b7b994b8780"
-  integrity sha512-LYuBQJe6Xl4s8m+CZwNHlDiq9XJm4o+f+kOHYzd0NtvTJbN4tKPGW0gvfC9uprWquSoNGnrQwAIq9Tp49++xEA==
+cl-uni@^1.3.4:
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/cl-uni/-/cl-uni-1.3.4.tgz#96a3a0be7b99f08f07a403e981936a3b510a699e"
+  integrity sha512-cpboKgy/CdaOUX2yXPSGndsOjIXA0GKzY2EQpmQnPJHQ26JJ515qFIJeG7Fjdo7r4LhKOKLbkApS8y7jAU6PjQ==
 
 class-utils@^0.3.5:
   version "0.3.6"

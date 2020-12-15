@@ -29,8 +29,8 @@ export default {
 					order: "desc"
 				}
 			],
-			prop: "",
-			order: ""
+			prop: "price",
+			order: "desc"
 		};
 	},
 
