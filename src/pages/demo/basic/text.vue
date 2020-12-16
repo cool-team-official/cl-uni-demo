@@ -1,7 +1,7 @@
 <template>
 	<view class="demo-text">
 		<cl-card label="默认">
-			<cl-text value="云想衣裳花想容，春风拂槛露华浓。" :letterSpacing="5"></cl-text>
+			<cl-text value="云想衣裳花想容，春风拂槛露华浓。"></cl-text>
 		</cl-card>
 
 		<cl-card label="不同颜色">

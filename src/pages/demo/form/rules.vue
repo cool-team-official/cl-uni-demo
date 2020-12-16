@@ -15,6 +15,7 @@
 				<cl-button @tap="changeShowMessage">{{
 					showMessage ? "关闭错误提示" : "打开错误提示"
 				}}</cl-button>
+				<cl-button @tap="changeDisabled">{{ disabled ? "解除禁用" : "禁用" }}</cl-button>
 			</view>
 
 			<!-- 表单 -->
@@ -25,6 +26,7 @@
 				:label-position="labelAlign"
 				:label-width="labelWidth"
 				:show-message="showMessage"
+				:disabled="disabled"
 			>
 				<cl-form-item label="活动名称" prop="name">
 					<cl-input placeholder="请填写活动名称" v-model="form.name"></cl-input>
@@ -70,7 +72,7 @@
 					</cl-radio-group>
 				</cl-form-item>
 				<cl-form-item label="活动描述" prop="desc">
-					<cl-textarea placeholder="活动描述" v-model="form.desc"></cl-textarea>
+					<cl-textarea count placeholder="活动描述" v-model="form.desc"></cl-textarea>
 				</cl-form-item>
 			</cl-form>
 		</cl-card>
@@ -90,6 +92,8 @@
 </template>
 
 <script>
+import { isArray } from "cl-uni/utils";
+
 export default {
 	data() {
 		return {
@@ -103,38 +107,7 @@ export default {
 				date: "",
 				cover: ""
 			},
-			rules: {
-				name: [
-					{
-						required: true,
-						message: "活动名称不能为空"
-					},
-					{
-						min: 3,
-						message: "必须在3个字符以上"
-					}
-				],
-				region: {
-					required: true,
-					message: "活动地区不能为空"
-				},
-				date: [
-					{
-						required: true,
-						message: "活动时间不能为空"
-					},
-					{
-						validator(rule, value, callback) {
-							let d = new Date(value);
-							if (d.getMonth() < 11) {
-								callback(new Error("请选择12月"));
-							} else {
-								callback();
-							}
-						}
-					}
-				]
-			},
+			rules: {},
 			options: {
 				type: [
 					{
@@ -186,8 +159,46 @@ export default {
 			labelAlign: "right",
 			labelWidth: "150rpx",
 			isRule: true,
-			showMessage: true
+			showMessage: true,
+			disabled: false
 		};
+	},
+
+	mounted() {
+		this.rules = {
+			name: [
+				{
+					required: true,
+					message: "活动名称不能为空"
+				},
+				{
+					min: 3,
+					message: "必须在3个字符以上"
+				}
+			],
+			region: {
+				required: true,
+				message: "活动地区不能为空"
+			},
+			date: [
+				{
+					required: true,
+					message: "活动时间不能为空"
+				},
+				{
+					validator(rule, value, callback) {
+						let d = new Date(value);
+						if (d.getMonth() < 11) {
+							callback(new Error("请选择12月"));
+						} else {
+							callback();
+						}
+					}
+				}
+			]
+		};
+
+		this.$refs["form"].setRules(this.rules);
 	},
 
 	methods: {
@@ -198,11 +209,24 @@ export default {
 			this.isRule = !this.isRule;
 
 			for (let i in this.rules) {
-				this.rules[i].required = this.isRule;
+				if (isArray(this.rules[i])) {
+					this.rules[i].map(e => {
+						if (e.required !== undefined) {
+							e.required = this.isRule;
+						}
+					});
+				} else {
+					this.rules[i].required = this.isRule;
+				}
 			}
+
+			this.$refs["form"].setRules(this.rules);
 		},
 		changeShowMessage() {
 			this.showMessage = !this.showMessage;
+		},
+		changeDisabled() {
+			this.disabled = !this.disabled;
 		},
 		onSubmit() {
 			this.$refs["form"].validate((valid, errors) => {

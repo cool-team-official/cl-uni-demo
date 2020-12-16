@@ -7,6 +7,14 @@
 		<cl-card label="禁用状态">
 			<cl-select v-model="form.b" :options="options" disabled></cl-select>
 		</cl-card>
+
+		<cl-card label="带边框">
+			<cl-select border v-model="form.c" :options="options"></cl-select>
+		</cl-card>
+
+		<cl-card label="带边框禁用">
+			<cl-select border v-model="form.c" :options="options" disabled></cl-select>
+		</cl-card>
 	</view>
 </template>
 
@@ -16,7 +24,8 @@ export default {
 		return {
 			form: {
 				a: 1,
-				b: 3
+				b: 3,
+				c: 0
 			},
 			options: [
 				{

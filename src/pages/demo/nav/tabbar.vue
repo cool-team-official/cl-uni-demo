@@ -58,7 +58,6 @@ export default {
 	position: fixed;
 	bottom: 0;
 	width: 100%;
-	padding-bottom: env(safe-area-inset-bottom);
 
 	.add {
 		display: inline-flex;
