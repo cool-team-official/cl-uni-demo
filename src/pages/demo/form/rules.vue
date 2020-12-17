@@ -5,24 +5,28 @@
 
 		<cl-card label="表单">
 			<view class="row">
-				<cl-button @tap="setLabelPosition('left')">左对齐</cl-button>
-				<cl-button @tap="setLabelPosition('right')">右对齐</cl-button>
-				<cl-button @tap="setLabelPosition('top')">顶部对齐</cl-button>
+				<cl-button size="mini" @tap="setLabelPosition('left')">左对齐</cl-button>
+				<cl-button size="mini" @tap="setLabelPosition('right')">右对齐</cl-button>
+				<cl-button size="mini" @tap="setLabelPosition('top')">顶部对齐</cl-button>
 			</view>
 
 			<view class="row">
-				<cl-button @tap="changeRule">{{ isRule ? "清空验证" : "还原验证" }}</cl-button>
-				<cl-button @tap="changeShowMessage">{{
+				<cl-button size="mini" @tap="changeRule">{{
+					isRule ? "清空验证" : "还原验证"
+				}}</cl-button>
+				<cl-button size="mini" @tap="clearValidate">移除校验结果</cl-button>
+				<cl-button size="mini" @tap="changeShowMessage">{{
 					showMessage ? "关闭错误提示" : "打开错误提示"
 				}}</cl-button>
-				<cl-button @tap="changeDisabled">{{ disabled ? "解除禁用" : "禁用" }}</cl-button>
+				<cl-button size="mini" @tap="changeDisabled">{{
+					disabled ? "解除禁用" : "禁用"
+				}}</cl-button>
 			</view>
 
 			<!-- 表单 -->
 			<cl-form
 				ref="form"
 				:model.sync="form"
-				:rules="rules"
 				:label-position="labelAlign"
 				:label-width="labelWidth"
 				:show-message="showMessage"
@@ -31,14 +35,36 @@
 				<cl-form-item label="活动名称" prop="name">
 					<cl-input placeholder="请填写活动名称" v-model="form.name"></cl-input>
 				</cl-form-item>
+				<cl-form-item label="活动描述" prop="desc">
+					<cl-textarea
+						count
+						placeholder="活动描述，自定义错误内容"
+						v-model="form.desc"
+					></cl-textarea>
+
+					<template #error=" {message, error}">
+						<cl-row
+							type="flex"
+							align="middle"
+							justify="end"
+							:margin="[20, 0, 0, 0]"
+							v-if="error"
+						>
+							<cl-text color="red" :value="message" :margin="[0, 20, 0, 0]"></cl-text>
+							<cl-button size="mini" @tap="autoInputDesc">自动填写</cl-button>
+						</cl-row>
+					</template>
+				</cl-form-item>
 				<cl-form-item label="活动区域" prop="region" justify="end">
 					<cl-select-region
+						border
 						placeholder="请选择活动区域"
 						v-model="form.region"
 					></cl-select-region>
 				</cl-form-item>
 				<cl-form-item label="活动时间" prop="date" justify="end">
 					<cl-select
+						border
 						mode="date"
 						placeholder="请选择活动时间"
 						v-model="form.date"
@@ -71,9 +97,6 @@
 						>
 					</cl-radio-group>
 				</cl-form-item>
-				<cl-form-item label="活动描述" prop="desc">
-					<cl-textarea count placeholder="活动描述" v-model="form.desc"></cl-textarea>
-				</cl-form-item>
 			</cl-form>
 		</cl-card>
 
@@ -98,7 +121,7 @@ export default {
 	data() {
 		return {
 			form: {
-				name: "情人节",
+				name: "",
 				region: ["120000", "120100", "120103"],
 				type: [0, 3],
 				delivery: true,
@@ -195,7 +218,11 @@ export default {
 						}
 					}
 				}
-			]
+			],
+			desc: {
+				required: true,
+				message: "活动描述不能为空"
+			}
 		};
 
 		this.$refs["form"].setRules(this.rules);
@@ -227,6 +254,12 @@ export default {
 		},
 		changeDisabled() {
 			this.disabled = !this.disabled;
+		},
+		clearValidate() {
+			this.$refs["form"].clearValidate();
+		},
+		autoInputDesc() {
+			this.form.desc = "年年有风，风吹年年，慢慢即漫漫";
 		},
 		onSubmit() {
 			this.$refs["form"].validate((valid, errors) => {
