@@ -76,6 +76,17 @@
 						<text>{{ item.label }}</text>
 					</cl-button>
 				</cl-col>
+
+				<cl-button loading-theme="spin" loading>不同加载图标</cl-button>
+
+				<cl-button
+					loading-theme="spin"
+					loading
+					loading-mask
+					loading-text="加载中"
+					type="primary"
+					>填充loading</cl-button
+				>
 			</cl-row>
 		</cl-card>
 
