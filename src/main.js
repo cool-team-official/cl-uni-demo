@@ -1,14 +1,14 @@
-import Vue from "vue"
-import App from "./App"
-import cooluni from 'cl-uni'
+import Vue from "vue";
+import App from "./App";
+import cooluni from "cl-uni";
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
-App.mpType = "app"
+App.mpType = "app";
 
-Vue.use(cooluni)
+Vue.use(cooluni);
 
 const app = new Vue({
-	...App,
-})
-app.$mount()
+	...App
+});
+app.$mount();
