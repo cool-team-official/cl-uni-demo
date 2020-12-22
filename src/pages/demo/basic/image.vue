@@ -22,7 +22,7 @@
 
 				<cl-col span="8">
 					<view class="block">
-						<cl-image size="150rpx" src=""> </cl-image>
+						<cl-image size="150rpx"> </cl-image>
 						<text>未填写地址</text>
 					</view>
 				</cl-col>

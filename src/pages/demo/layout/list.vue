@@ -113,6 +113,7 @@ export default {
 			color: #fff;
 			box-sizing: border-box;
 			margin: 0;
+			border: 0;
 
 			&::after {
 				border: 0;

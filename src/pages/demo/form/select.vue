@@ -15,6 +15,10 @@
 		<cl-card label="带边框禁用">
 			<cl-select border v-model="form.c" :options="options" disabled></cl-select>
 		</cl-card>
+
+		<cl-card label="日期">
+			<cl-select border v-model="form.d" mode="date"></cl-select>
+		</cl-card>
 	</view>
 </template>
 
@@ -25,7 +29,8 @@ export default {
 			form: {
 				a: 1,
 				b: 3,
-				c: 0
+				c: 0,
+				d: ""
 			},
 			options: [
 				{

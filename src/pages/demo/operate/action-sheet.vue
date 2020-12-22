@@ -94,7 +94,7 @@ export default {
 
 		open3() {
 			this.$refs["cl-action-sheet"].open({
-				wrapperClosable: false,
+				closeOnClickModal: false,
 				list: [
 					{
 						label: "禁用遮罩层",
@@ -119,4 +119,3 @@ export default {
 	}
 };
 </script>
-

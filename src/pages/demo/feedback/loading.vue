@@ -12,7 +12,7 @@
 			</cl-row>
 		</cl-card>
 
-		<cl-card label="区域加载">
+		<!-- <cl-card label="区域加载">
 			<cl-loading-mask :loading="true" text="拼命加载中">
 				<cl-form>
 					<cl-form-item label="姓名">
@@ -43,7 +43,7 @@
 					</cl-form-item>
 				</cl-form>
 			</cl-loading-mask>
-		</cl-card>
+		</cl-card> -->
 
 		<cl-card label="基本用法">
 			<cl-loading-mask
