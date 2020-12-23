@@ -1,6 +1,6 @@
 <template>
 	<view class="demo-canvas">
-		<canvas style="width: 100%" canvas-id="test"></canvas>
+		<canvas style="width: 100%" canvas-id="test" id="test"></canvas>
 
 		<view class="op">
 			<cl-button @tap="preview">预览图片</cl-button>

@@ -169,7 +169,13 @@ export default {
 
 <style lang="scss">
 page {
+	// #ifdef H5
 	height: 100%;
+	// #endif
+
+	// #ifndef H5
+	height: 100vh;
+	// #endif
 	overflow: hidden;
 }
 </style>
