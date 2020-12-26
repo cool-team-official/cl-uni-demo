@@ -106,10 +106,6 @@ export default {
 		height: 200rpx;
 		padding-top: 50rpx;
 
-		&:active {
-			background-color: #eee;
-		}
-
 		.label {
 			display: block;
 			font-size: 22rpx;

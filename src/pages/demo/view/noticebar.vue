@@ -59,8 +59,21 @@
 			>
 			</cl-noticebar>
 		</cl-card>
+
+		<cl-card label="超慢 20s">
+			<cl-noticebar
+				scrollable
+				:duration="20"
+				text="年年有风，风吹年年，慢慢即漫漫。日日升日，日落日日，旧旧亦久久。"
+			>
+			</cl-noticebar>
+		</cl-card>
 	</view>
 </template>
+
+<script>
+export default {};
+</script>
 
 <style lang="scss" scoped>
 .demo-noticebar {

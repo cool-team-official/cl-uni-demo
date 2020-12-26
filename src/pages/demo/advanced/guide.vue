@@ -10,11 +10,12 @@
 			</view>
 
 			<view class="row">
-				<cl-image
-					class="image"
-					:size="200"
-					src="https://cool-comm.oss-cn-shenzhen.aliyuncs.com/show/imgs/avatar.jpeg"
-				/>
+				<view class="image">
+					<cl-image
+						:size="200"
+						src="https://cool-comm.oss-cn-shenzhen.aliyuncs.com/show/imgs/avatar.jpeg"
+					/>
+				</view>
 			</view>
 
 			<view class="row">
@@ -61,6 +62,9 @@ export default {
 				},
 				{
 					selector: ".image",
+					style: {
+						'border-radius': '100px'
+					},
 					image: {
 						url: "/static/images/guide.png",
 						style: {
@@ -127,7 +131,9 @@ page {
 		bottom: 20rpx;
 	}
 
-	.text {
+	.image {
+		border-radius: 100rpx;
+		overflow: hidden;
 	}
 
 	.block {
