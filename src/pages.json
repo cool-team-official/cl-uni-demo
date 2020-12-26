@@ -350,20 +350,6 @@
 		"navigationBarTitleText": "cool-uni",
 		"navigationBarBackgroundColor": "#fff"
 	},
-	"tabBar": {
-		"borderStyle": "white",
-		"backgroundColor": "#fff",
-		"list": [
-			{
-				"pagePath": "pages/index/index",
-				"text": "首页"
-			},
-			{
-				"pagePath": "pages/demo/operate/action-sheet",
-				"text": "底部菜单"
-			}
-		]
-	},
 	"easycom": {
 		"autoscan": true,
 		"custom": {

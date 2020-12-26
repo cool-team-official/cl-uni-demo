@@ -1,13 +1,83 @@
 <template>
 	<view class="demo-filter-bar">
+		<!-- 下拉框 -->
 		<text class="label">下拉框</text>
-		<cl-filter-bar :list="dropdown" @change="onChange"> </cl-filter-bar>
+		<cl-filter-bar>
+			<cl-filter-item
+				v-model="arr1"
+				label="多选"
+				:options="list"
+				type="dropdown"
+				multiple
+			></cl-filter-item>
 
+			<cl-filter-item
+				v-model="arr2"
+				label="多选 Grid 主题"
+				:options="list"
+				type="dropdown"
+				theme="grid"
+				multiple
+			></cl-filter-item>
+
+			<cl-filter-item
+				v-model="str1"
+				label="单选"
+				:options="list"
+				type="dropdown"
+			></cl-filter-item>
+		</cl-filter-bar>
+
+		<!-- 排序 -->
 		<text class="label">排序</text>
-		<cl-filter-bar :list="sort" @change="onChange"> </cl-filter-bar>
+		<cl-filter-bar>
+			<cl-filter-item v-model="sort1" label="价格" type="sort"></cl-filter-item>
+			<cl-filter-item v-model="sort2" label="销售额" type="sort"></cl-filter-item>
+		</cl-filter-bar>
 
+		<!-- 混合 -->
 		<text class="label">混合</text>
-		<cl-filter-bar :list="mixins" @change="onChange"> </cl-filter-bar>
+		<cl-filter-bar @change="onChange">
+			<cl-filter-item
+				v-model="str2"
+				label="单选"
+				:options="list"
+				type="dropdown"
+				prop="rank"
+			></cl-filter-item>
+
+			<cl-filter-item prop="price" v-model="sort3" label="价格" type="sort"></cl-filter-item>
+		</cl-filter-bar>
+
+		<!-- 自定义 -->
+		<text class="label">自定义</text>
+		<cl-filter-bar ref="filter-bar">
+			<cl-filter-item
+				v-model="str3"
+				label="单选"
+				:options="list"
+				type="dropdown"
+			></cl-filter-item>
+
+			<cl-filter-item v-model="sort4" label="价格" type="sort"></cl-filter-item>
+
+			<view class="cl-filter-item">
+				<cl-button size="mini" type="primary" @tap="toAdvSearch">高级搜索</cl-button>
+			</view>
+		</cl-filter-bar>
+
+		<!-- 高级搜索 -->
+		<cl-popup :visible.sync="adv.visible" direction="right" size="60%">
+			<cl-form size="mini" label-position="top">
+				<cl-form-item label="姓名">
+					<cl-input v-model="adv.form.name" placeholder="请填写姓名"></cl-input>
+				</cl-form-item>
+
+				<cl-form-item label="价格">
+					<cl-input-number v-model="adv.form.price" :min="1"></cl-input-number>
+				</cl-form-item>
+			</cl-form>
+		</cl-popup>
 	</view>
 </template>
 
@@ -15,166 +85,59 @@
 export default {
 	data() {
 		return {
-			val: "rank",
-			dropdown: [
+			list: [
 				{
-					label: "多选",
-					value: "rank",
-					type: "dropdown",
-					multiple: true,
-					children: [
-						{
-							label: "综合排序",
-							value: 1,
-							checked: true
-						},
-						{
-							label: "距离最近",
-							value: 2
-						},
-						{
-							label: "好评优先",
-							value: 3
-						},
-						{
-							label: "起送价最低",
-							value: 4
-						},
-						{
-							label: "配送最快",
-							value: 5
-						},
-						{
-							label: "通用排序",
-							value: 6
-						},
-						{
-							label: "通用排序2",
-							value: 7
-						}
-					]
+					label: "综合排序",
+					value: 1
 				},
 				{
-					label: "grid主题",
-					value: "rank2",
-					type: "dropdown",
-					multiple: true,
-					theme: "grid",
-					children: [
-						{
-							label: "综合排序",
-							value: 1,
-							checked: true
-						},
-						{
-							label: "距离最近",
-							value: 2
-						},
-						{
-							label: "好评优先",
-							value: 3
-						},
-						{
-							label: "起送价最低",
-							value: 4
-						},
-						{
-							label: "配送最快",
-							value: 5
-						},
-						{
-							label: "通用排序",
-							value: 6
-						},
-						{
-							label: "通用排序2",
-							value: 7
-						}
-					]
+					label: "距离最近",
+					value: 2
 				},
 				{
-					label: "配送方式",
-					value: "method",
-					type: "dropdown",
-					multiple: false,
-					children: [
-						{
-							label: "申通",
-							value: 1
-						},
-						{
-							label: "圆通",
-							value: 2
-						},
-						{
-							label: "顺丰",
-							value: 3
-						}
-					]
+					label: "好评优先",
+					value: 3
+				},
+				{
+					label: "起送价最低",
+					value: 4
+				},
+				{
+					label: "配送最快",
+					value: 5
+				},
+				{
+					label: "通用排序",
+					value: 6
 				}
 			],
-			sort: [
-				{
-					label: "价格",
-					value: "price",
-					order: "desc"
-				},
-				{
-					label: "销售额",
-					value: "sale",
-					order: ""
+			adv: {
+				visible: false,
+				form: {
+					name: "",
+					price: 1
 				}
-			],
-			mixins: [
-				{
-					label: "下拉框",
-					value: "rank",
-					type: "dropdown",
-					multiple: true,
-					children: [
-						{
-							label: "综合排序",
-							value: 1,
-							checked: true
-						},
-						{
-							label: "距离最近",
-							value: 2
-						},
-						{
-							label: "好评优先",
-							value: 3
-						},
-						{
-							label: "起送价最低",
-							value: 4
-						},
-						{
-							label: "配送最快",
-							value: 5
-						},
-						{
-							label: "通用排序",
-							value: 6
-						},
-						{
-							label: "通用排序2",
-							value: 7
-						}
-					]
-				},
-				{
-					label: "价格排序",
-					value: "price",
-					order: "desc"
-				}
-			]
+			},
+			arr1: [2],
+			arr2: [2, 3],
+			str1: "",
+			str2: "",
+			str3: "",
+			sort1: "desc",
+			sort2: "",
+			sort3: "asc",
+			sort4: ""
 		};
 	},
 
 	methods: {
 		onChange(d) {
 			console.log(d);
+		},
+
+		toAdvSearch() {
+			this.$refs["filter-bar"].close();
+			this.adv.visible = true;
 		}
 	}
 };

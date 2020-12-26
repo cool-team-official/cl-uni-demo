@@ -2495,10 +2495,10 @@ cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.3:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
 
-cl-uni@^1.4.4:
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/cl-uni/-/cl-uni-1.4.4.tgz#0e3db7c6b10c19f82cf5e5a8b4dd15b033ddd91d"
-  integrity sha512-178HDzcOSjo6K+aAR4IjmnWP+2hoE6CpHaVb5RVNJRwNoCKMM3diHsWFt0Ph7JLnTVrueu4p3JkF3HsdOubNQA==
+cl-uni@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.npmjs.org/cl-uni/-/cl-uni-1.5.0.tgz#46223a665726ca7a26694088123faa4425193fbb"
+  integrity sha512-mK5FCQHi2DfQFh7kOFExRBxHGcUE2fUIUieHp6hKFsedqOdmaU12xOCofXR5AvqPX9lGpyEHDiK8lCTS+nqyRQ==
 
 class-utils@^0.3.5:
   version "0.3.6"
