@@ -142,9 +142,6 @@ export default {
 							path: "loadmore"
 						},
 						{
-							label: "Steps 步骤"
-						},
-						{
 							label: "Dialog 对话框",
 							path: "dialog"
 						},
@@ -159,9 +156,6 @@ export default {
 						{
 							label: "Search 搜索",
 							path: "search"
-						},
-						{
-							label: "Dropdown 下拉框"
 						}
 					]
 				},
