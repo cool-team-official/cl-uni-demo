@@ -35,6 +35,13 @@
 			<cl-filter-item v-model="sort2" label="销售额" type="sort"></cl-filter-item>
 		</cl-filter-bar>
 
+		<!-- 开关 -->
+		<text class="label">开关</text>
+		<cl-filter-bar>
+			<cl-filter-item v-model="swi1" label="是否自营" type="switch"></cl-filter-item>
+			<cl-filter-item v-model="swi2" label="7天无理由退货" type="switch"></cl-filter-item>
+		</cl-filter-bar>
+
 		<!-- 混合 -->
 		<text class="label">混合</text>
 		<cl-filter-bar @change="onChange">
@@ -47,19 +54,26 @@
 			></cl-filter-item>
 
 			<cl-filter-item prop="price" v-model="sort3" label="价格" type="sort"></cl-filter-item>
+
+			<cl-filter-item
+				prop="isRefund"
+				v-model="swi3"
+				label="7天无理由退货"
+				type="switch"
+			></cl-filter-item>
 		</cl-filter-bar>
 
 		<!-- 自定义 -->
 		<text class="label">自定义</text>
 		<cl-filter-bar ref="filter-bar">
-			<cl-filter-item
-				v-model="str3"
-				label="单选"
-				:options="list"
-				type="dropdown"
-			></cl-filter-item>
-
-			<cl-filter-item v-model="sort4" label="价格" type="sort"></cl-filter-item>
+			<cl-filter-item v-model="str3" label="单选" :options="list" type="dropdown">
+				<template #dropdown>
+					<cl-row type="flex" align="middle" justify="space-between" :margin="20">
+						<cl-text value="亲，提交肤质信息帮你挑选更合适的宝贝哦！"></cl-text>
+						<cl-button size="mini" type="text">添加</cl-button>
+					</cl-row>
+				</template>
+			</cl-filter-item>
 
 			<view class="cl-filter-item">
 				<cl-button size="mini" type="primary" @tap="toAdvSearch">高级搜索</cl-button>
@@ -92,7 +106,8 @@ export default {
 				},
 				{
 					label: "距离最近",
-					value: 2
+					value: 2,
+					disabled: true
 				},
 				{
 					label: "好评优先",
@@ -118,15 +133,18 @@ export default {
 					price: 1
 				}
 			},
-			arr1: [2],
-			arr2: [2, 3],
+			arr1: [4],
+			arr2: [3, 6],
 			str1: "",
-			str2: "",
+			str2: 2,
 			str3: "",
 			sort1: "desc",
 			sort2: "",
 			sort3: "asc",
-			sort4: ""
+			sort4: "",
+			swi1: false,
+			swi2: true,
+			swi3: true
 		};
 	},
 
