@@ -3,11 +3,17 @@
 		<canvas style="width: 100%" canvas-id="test" id="test"></canvas>
 
 		<view class="op">
-			<cl-button @tap="preview">预览图片</cl-button>
+			<cl-row :gutter="20">
+				<cl-col :span="8">
+					<cl-button fill @tap="preview">预览图片</cl-button>
+				</cl-col>
 
-			<!-- #ifndef H5 -->
-			<cl-button @tap="save">保存图片</cl-button>
-			<!-- #endif -->
+				<cl-col :span="8">
+					<!-- #ifndef H5 -->
+					<cl-button fill type="success" @tap="save">保存图片</cl-button>
+					<!-- #endif -->
+				</cl-col>
+			</cl-row>
 		</view>
 	</view>
 </template>
@@ -32,7 +38,7 @@ export default {
 				height: 120,
 				width: windowWidth - 20,
 				radius: 5,
-				backgroundColor: "#fff"
+				backgroundColor: "#ffffff"
 			})
 			.text({
 				x: 130,
@@ -78,7 +84,7 @@ export default {
 	}
 
 	.op {
-		padding: 0 20rpx;
+		padding: 10rpx 20rpx;
 	}
 }
 </style>

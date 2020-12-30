@@ -5,22 +5,51 @@
 
 		<cl-card label="表单">
 			<view class="row">
-				<cl-button size="mini" @tap="setLabelPosition('left')">左对齐</cl-button>
-				<cl-button size="mini" @tap="setLabelPosition('right')">右对齐</cl-button>
-				<cl-button size="mini" @tap="setLabelPosition('top')">顶部对齐</cl-button>
+				<cl-row :gutter="20">
+					<cl-col :span="6">
+						<cl-button fill size="mini" @tap="setLabelPosition('left')"
+							>左对齐</cl-button
+						>
+					</cl-col>
+
+					<cl-col :span="6">
+						<cl-button fill size="mini" @tap="setLabelPosition('right')"
+							>右对齐</cl-button
+						>
+					</cl-col>
+
+					<cl-col :span="6">
+						<cl-button fill size="mini" @tap="setLabelPosition('top')"
+							>顶部对齐</cl-button
+						>
+					</cl-col>
+
+					<cl-col :span="6">
+						<cl-button fill size="mini" @tap="changeDisabled">{{
+							disabled ? "解除禁用" : "禁用"
+						}}</cl-button>
+					</cl-col>
+				</cl-row>
 			</view>
 
 			<view class="row">
-				<cl-button size="mini" @tap="changeRule">{{
-					isRule ? "清空验证" : "还原验证"
-				}}</cl-button>
-				<cl-button size="mini" @tap="clearValidate">移除校验结果</cl-button>
-				<cl-button size="mini" @tap="changeShowMessage">{{
-					showMessage ? "关闭错误提示" : "打开错误提示"
-				}}</cl-button>
-				<cl-button size="mini" @tap="changeDisabled">{{
-					disabled ? "解除禁用" : "禁用"
-				}}</cl-button>
+				<cl-row :gutter="20">
+					<cl-col :span="8">
+						<cl-button fill size="mini" @tap="changeRule">{{
+							isRule ? "清空验证" : "还原验证"
+						}}</cl-button>
+					</cl-col>
+
+					<cl-col :span="8">
+						<cl-button fill size="mini" @tap="clearValidate">移除校验结果</cl-button>
+					</cl-col>
+
+					<cl-col :span="8">
+						<cl-button fill size="mini" @tap="changeShowMessage">{{
+							showMessage ? "关闭错误提示" : "打开错误提示"
+						}}</cl-button>
+					</cl-col>
+				</cl-row>
 			</view>
 
 			<!-- 表单 -->
@@ -42,7 +71,7 @@
 						v-model="form.desc"
 					></cl-textarea>
 
-					<template #error=" {message, error}">
+					<!-- <template #error=" {message, error}">
 						<cl-row
 							type="flex"
 							align="middle"
@@ -53,7 +82,7 @@
 							<cl-text color="red" :value="message" :margin="[0, 20, 0, 0]"></cl-text>
 							<cl-button size="mini" @tap="autoInputDesc">自动填写</cl-button>
 						</cl-row>
-					</template>
+					</template> -->
 				</cl-form-item>
 				<cl-form-item label="活动区域" prop="region" justify="end">
 					<cl-select-region

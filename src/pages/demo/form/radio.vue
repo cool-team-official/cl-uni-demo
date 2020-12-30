@@ -32,10 +32,10 @@ export default {
 	data() {
 		return {
 			form: {
-				a: '1',
-				b: '1',
-				c: '1',
-				d: '1'
+				a: "1",
+				b: "1",
+				c: "1",
+				d: "1"
 			}
 		};
 	}

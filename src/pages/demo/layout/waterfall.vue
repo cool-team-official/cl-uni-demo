@@ -1,22 +1,30 @@
 <template>
 	<view class="demo-waterfall">
 		<view class="header">
-			<cl-button
-				size="small"
-				v-for="(item, index) in columns"
-				:key="index"
-				@tap="setColumn(item)"
-				>{{ item }}列</cl-button
-			>
+			<cl-row :gutter="20">
+				<cl-col :span="6" v-for="(item, index) in columns" :key="index">
+					<cl-button
+						size="small"
+						:type="item == column ? 'primary' : ''"
+						fill
+						@tap="setColumn(item)"
+						>{{ item }}列</cl-button
+					>
+				</cl-col>
+			</cl-row>
 		</view>
 
 		<view class="container">
-			<cl-waterfall ref="waterfall" :column="column">
-				<template v-slot="{ item, index }">
-					<view :class="['h', `h-${item.index}`]">
-						<text>{{ index }} - {{ item.index }} </text>
+			<cl-waterfall ref="waterfall" :column="column" v-model="list">
+				<cl-waterfall-column v-for="(children, index) in list" :key="index">
+					<view
+						v-for="(item, index2) in children"
+						:key="index2"
+						:class="['h', `h-${item.index || 1}`]"
+					>
+						<text>{{ item.id }}</text>
 					</view>
-				</template>
+				</cl-waterfall-column>
 			</cl-waterfall>
 		</view>
 
@@ -25,6 +33,8 @@
 </template>
 
 <script>
+let id = 0;
+
 export default {
 	data() {
 		return {
@@ -38,6 +48,7 @@ export default {
 	},
 
 	mounted() {
+		id = 0;
 		this.$refs["waterfall"].refresh(this.rdList());
 	},
 
@@ -65,7 +76,8 @@ export default {
 			return new Array(5 * this.column).fill(1).map((e, i) => {
 				let d = {
 					index: parseInt(Math.random() * 7) + 3,
-					url: ""
+					url: "",
+					id: id++
 				};
 
 				return d;
@@ -73,8 +85,12 @@ export default {
 		},
 
 		setColumn(index) {
+			id = 0;
 			this.column = index;
-			this.$refs["waterfall"].refresh(this.rdList());
+
+			this.$nextTick(() => {
+				this.$refs["waterfall"].refresh(this.rdList());
+			});
 		}
 	}
 };
@@ -89,8 +105,7 @@ page {
 <style lang="scss" scoped>
 .demo-waterfall {
 	.header {
-		padding: 0 20rpx;
-		margin-bottom: 20rpx;
+		padding: 20rpx;
 	}
 
 	.container {
