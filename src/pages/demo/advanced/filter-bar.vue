@@ -2,13 +2,14 @@
 	<view class="demo-filter-bar">
 		<!-- 下拉框 -->
 		<text class="label">下拉框</text>
-		<cl-filter-bar>
+		<cl-filter-bar @change="onChange">
 			<cl-filter-item
 				v-model="arr1"
 				label="多选"
 				:options="list"
 				type="dropdown"
 				multiple
+				prop="m1"
 			></cl-filter-item>
 
 			<cl-filter-item
@@ -18,6 +19,7 @@
 				type="dropdown"
 				theme="grid"
 				multiple
+				prop="m2"
 			></cl-filter-item>
 
 			<cl-filter-item
@@ -25,14 +27,25 @@
 				label="单选"
 				:options="list"
 				type="dropdown"
+				prop="s1"
 			></cl-filter-item>
 		</cl-filter-bar>
 
 		<!-- 排序 -->
 		<text class="label">排序</text>
-		<cl-filter-bar>
-			<cl-filter-item v-model="sort1" label="价格" type="sort"></cl-filter-item>
-			<cl-filter-item v-model="sort2" label="销售额" type="sort"></cl-filter-item>
+		<cl-filter-bar order-type="single" @change="onChange">
+			<cl-filter-item
+				v-model="order1"
+				label="价格"
+				type="order"
+				prop="price"
+			></cl-filter-item>
+			<cl-filter-item
+				v-model="order2"
+				label="销售额"
+				type="order"
+				prop="sales"
+			></cl-filter-item>
 		</cl-filter-bar>
 
 		<!-- 开关 -->
@@ -53,7 +66,12 @@
 				prop="rank"
 			></cl-filter-item>
 
-			<cl-filter-item prop="price" v-model="sort3" label="价格" type="sort"></cl-filter-item>
+			<cl-filter-item
+				prop="price"
+				v-model="order3"
+				label="价格"
+				type="order"
+			></cl-filter-item>
 
 			<cl-filter-item
 				prop="isRefund"
@@ -138,10 +156,10 @@ export default {
 			str1: "",
 			str2: 2,
 			str3: "",
-			sort1: "desc",
-			sort2: "",
-			sort3: "asc",
-			sort4: "",
+			order1: "desc",
+			order2: "",
+			order3: "asc",
+			order4: "",
 			swi1: false,
 			swi2: true,
 			swi3: true

@@ -35,7 +35,7 @@ export default {
 	data() {
 		return {
 			form: {
-				a: false,
+				a: true,
 				b: false,
 				b1: true,
 				c: ["1"],
