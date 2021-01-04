@@ -56,6 +56,7 @@
 			<cl-form
 				ref="form"
 				:model.sync="form"
+				:rules="rules"
 				:label-position="labelAlign"
 				:label-width="labelWidth"
 				:show-message="showMessage"
@@ -71,7 +72,8 @@
 						v-model="form.desc"
 					></cl-textarea>
 
-					<!-- <template #error=" {message, error}">
+					<!-- #ifndef MP-TOUTIAO -->
+					<template #error="{message, error}">
 						<cl-row
 							type="flex"
 							align="middle"
@@ -82,7 +84,8 @@
 							<cl-text color="red" :value="message" :margin="[0, 20, 0, 0]"></cl-text>
 							<cl-button size="mini" @tap="autoInputDesc">自动填写</cl-button>
 						</cl-row>
-					</template> -->
+					</template>
+					<!-- #endif -->
 				</cl-form-item>
 				<cl-form-item label="活动区域" prop="region" justify="end">
 					<cl-select-region
@@ -159,7 +162,42 @@ export default {
 				date: "",
 				cover: ""
 			},
-			rules: {},
+			rules: {
+				name: [
+					{
+						required: true,
+						message: "活动名称不能为空"
+					},
+					{
+						min: 3,
+						message: "必须在3个字符以上"
+					}
+				],
+				region: {
+					required: true,
+					message: "活动地区不能为空"
+				},
+				date: [
+					{
+						required: true,
+						message: "活动时间不能为空"
+					},
+					{
+						validator(rule, value, callback) {
+							let d = new Date(value);
+							if (d.getMonth() < 11) {
+								callback(new Error("请选择12月"));
+							} else {
+								callback();
+							}
+						}
+					}
+				],
+				desc: {
+					required: true,
+					message: "活动描述不能为空"
+				}
+			},
 			options: {
 				type: [
 					{
@@ -216,46 +254,7 @@ export default {
 		};
 	},
 
-	mounted() {
-		this.rules = {
-			name: [
-				{
-					required: true,
-					message: "活动名称不能为空"
-				},
-				{
-					min: 3,
-					message: "必须在3个字符以上"
-				}
-			],
-			region: {
-				required: true,
-				message: "活动地区不能为空"
-			},
-			date: [
-				{
-					required: true,
-					message: "活动时间不能为空"
-				},
-				{
-					validator(rule, value, callback) {
-						let d = new Date(value);
-						if (d.getMonth() < 11) {
-							callback(new Error("请选择12月"));
-						} else {
-							callback();
-						}
-					}
-				}
-			],
-			desc: {
-				required: true,
-				message: "活动描述不能为空"
-			}
-		};
-
-		this.$refs["form"].setRules(this.rules);
-	},
+	mounted() {},
 
 	methods: {
 		setLabelPosition(pos) {
