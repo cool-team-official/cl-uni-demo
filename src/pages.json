@@ -353,7 +353,7 @@
 	"easycom": {
 		"autoscan": true,
 		"custom": {
-			"cl-(.*)": " cl-uni/components/cl-$1/cl-$1.vue"
+			"cl-(.*)": "cl-uni/components/cl-$1/cl-$1.vue"
 		}
 	}
 }
