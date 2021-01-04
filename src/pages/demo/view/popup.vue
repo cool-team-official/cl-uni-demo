@@ -1,7 +1,12 @@
 <template>
 	<view class="demo-popup">
 		<cl-card :label="item.label" v-for="(item, index) in dirs" :key="index">
-			<cl-popup :visible.sync="item.visible" :direction="item.value">
+			<cl-popup
+				:visible.sync="item.visible"
+				:direction="item.value"
+				@close="onClose"
+				@open="onOpen"
+			>
 				<p class="f-26">这是{{ item.label }}</p>
 			</cl-popup>
 

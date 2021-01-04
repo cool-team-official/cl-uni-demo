@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cl-uni": "^1.6.5"
+    "cl-uni": "^1.6.8"
   }
 }
