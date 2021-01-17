@@ -200,6 +200,10 @@ export default {
 						{
 							label: "Card 卡片",
 							path: "card"
+						},
+						{
+							label: "Scroller 滚动区域",
+							path: "scroller"
 						}
 					]
 				},

@@ -234,6 +234,13 @@
 					"style": {
 						"navigationBarTitleText": "Card 卡片"
 					}
+				},
+				{
+					"path": "scroller",
+					"style": {
+						"navigationBarTitleText": "Scroller 滚动区域",
+						"disableScroll": true
+					}
 				}
 			]
 		},
@@ -353,7 +360,7 @@
 	"easycom": {
 		"autoscan": true,
 		"custom": {
-			"cl-(.*)": "cl-uni/components/cl-$1/cl-$1.vue"
+			"cl-(.*)": "@/cl-uni/components/cl-$1/cl-$1.vue"
 		}
 	}
 }
