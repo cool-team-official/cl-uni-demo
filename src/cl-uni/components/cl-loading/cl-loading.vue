@@ -13,8 +13,8 @@
 						spinStyle,
 						{
 							top: 0,
-							left: `calc(50% - ${rw}px)`
-						}
+							left: `calc(50% - ${rw}px)`,
+						},
 					]"
 				></text>
 
@@ -25,8 +25,8 @@
 						{
 							top: `calc(50% - ${rh}px)`,
 							right: `${rh - rw}px`,
-							transform: 'rotate(90deg)'
-						}
+							transform: 'rotate(90deg)',
+						},
 					]"
 				></text>
 
@@ -36,8 +36,8 @@
 						spinStyle,
 						{
 							left: `calc(50% - ${rw}px)`,
-							bottom: 0
-						}
+							bottom: 0,
+						},
 					]"
 				></text>
 
@@ -48,8 +48,8 @@
 						{
 							left: `${rh - rw}px`,
 							top: `calc(50% - ${rh}px)`,
-							transform: 'rotate(90deg)'
-						}
+							transform: 'rotate(90deg)',
+						},
 					]"
 				></text>
 			</view>
@@ -62,7 +62,7 @@
 				color,
 				borderColor,
 				borderWidth,
-				'border-bottom': `${borderWidth} solid currentColor`
+				'border-bottom': `${borderWidth} solid currentColor`,
 			}"
 			v-else
 		>
@@ -88,20 +88,20 @@ export default {
 		color: String,
 		borderColor: {
 			type: String,
-			default: "rgba(0, 0, 0, 0.1)"
+			default: "rgba(0, 0, 0, 0.1)",
 		},
 		borderWidth: {
 			type: String,
-			default: "4rpx"
+			default: "4rpx",
 		},
 		theme: {
 			type: String,
-			default: "default"
+			default: "default",
 		},
 		size: {
 			type: Number,
-			default: 25
-		}
+			default: 25,
+		},
 	},
 
 	computed: {
@@ -117,9 +117,9 @@ export default {
 			return {
 				height: this.rh * 2 + "px",
 				width: this.rw * 2 + "px",
-				color: this.color
+				color: this.color,
 			};
-		}
-	}
+		},
+	},
 };
 </script>
