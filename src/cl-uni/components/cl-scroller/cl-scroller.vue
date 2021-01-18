@@ -24,9 +24,13 @@
 		<scroll-view
 			class="cl-scroller__view"
 			scroll-y
-			enable-back-to-top
 			:lower-top="bottom"
-			:scroll-top="scrollTop"
+			:scroll-top="scrollTop2"
+			:scroll-into-view="scrollIntoView"
+			:scroll-with-animation="scrollWithAnimation"
+			:enable-back-to-top="enableBackToTop"
+			:show-scrollbar="showScrollbar"
+			:enable-flex="enableFlex"
 			@scroll="onScroll"
 			@scrolltolower="up"
 		>
@@ -39,7 +43,7 @@
 /**
  * scroller 滚动区域
  * @description
- * @tutorial https://docs.cool-js.com/uni/components/layout/grid.html
+ * @tutorial https://docs.cool-js.com/uni/components/layout/scroller.html
  * @property {Number} top 距离顶部多少px触发
  * @property {Number} bottom 距离底部多少px触发
  * @property {String} loadingText 正在刷新文案
@@ -88,7 +92,7 @@ export default {
 		// 控制是否出现滚动条
 		showScrollbar: Boolean,
 		// 启用 flexbox 布局
-		enableFlex
+		enableFlex: Boolean
 	},
 
 	data() {
@@ -98,9 +102,18 @@ export default {
 				move: 0
 			},
 			height: 0,
-			scrollTop: 0,
+			scrollTop2: 0,
 			status: "end" // pulling, loading, end
 		};
+	},
+
+	watch: {
+		scrollTop: {
+			immediate: true,
+			handler(val) {
+				this.scrollTop2 = val || 0;
+			}
+		}
 	},
 
 	mounted() {
@@ -141,7 +154,7 @@ export default {
 		},
 
 		onTouchMove(e) {
-			if (this.status == "pulling" && this.scrollTop <= 10) {
+			if (this.status == "pulling" && this.scrollTop2 <= 10) {
 				let offset = e.changedTouches[0].clientY - this.touch.start;
 
 				if (offset <= 200) {
@@ -160,7 +173,7 @@ export default {
 
 		// 滚动监听
 		onScroll(e) {
-			this.scrollTop = e.detail.scrollTop;
+			this.scrollTop2 = e.detail.scrollTop;
 			this.$emit("scroll", e);
 		},
 
