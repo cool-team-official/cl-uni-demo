@@ -1,6 +1,6 @@
 <template>
 	<view class="demo-scroller">
-		<cl-scroller ref="scroller" @up="onUp" @down="onDown">
+		<cl-scroller ref="scroller" :scroll-top="200" @up="onUp" @down="onDown">
 			<view class="item" v-for="(item, index) in list" :key="index">
 				<cl-list-item :label="`${index + 1}`"></cl-list-item>
 			</view>

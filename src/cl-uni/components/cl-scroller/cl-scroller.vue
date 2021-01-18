@@ -128,7 +128,7 @@ export default {
 			},
 			height: 0,
 			scrollTop2: 0,
-			backTopButtonFadeIn: true,
+			backTopButtonFadeIn: false,
 			status: "end" // pulling, loading, end
 		};
 	},
