@@ -44,10 +44,16 @@ export default {
 </script>
 
 <style lang="scss">
-page,
+page {
+	height: 100%;
+	overflow: hidden;
+}
+
 .demo-scroller {
 	height: 100%;
 	overflow: hidden;
+	padding-bottom: env(safe-area-inset-bottom);
+	box-sizing: border-box;
 
 	.item {
 		margin: 20rpx;
