@@ -117,7 +117,12 @@ export default {
 		// 控制是否出现滚动条
 		showScrollbar: Boolean,
 		// 启用 flexbox 布局
-		enableFlex: Boolean
+		enableFlex: Boolean,
+		// 启用下拉刷新
+		refresherEnabled: {
+			type: Boolean,
+			default: true
+		}
 	},
 
 	data() {
@@ -173,7 +178,8 @@ export default {
 
 	methods: {
 		onTouchStart(e) {
-			if (this.status == "end") {
+			console.log(this.refresherEnabled);
+			if (this.status == "end" && this.refresherEnabled) {
 				this.touch.start = e.changedTouches[0].clientY;
 				this.status = "pulling";
 			}

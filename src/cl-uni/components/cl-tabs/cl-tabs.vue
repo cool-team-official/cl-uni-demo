@@ -3,7 +3,7 @@
 		<view
 			class="cl-tabs__header"
 			:style="{
-				top: stickyTop,
+				top: stickyTop
 			}"
 		>
 			<scroll-view
@@ -12,13 +12,13 @@
 				scroll-x
 				:scroll-left="scrollLeft"
 				:style="{
-					backgroundColor,
+					backgroundColor
 				}"
 			>
 				<view
 					class="cl-tabs__bar-box"
 					:style="{
-						'text-align': justify,
+						'text-align': justify
 					}"
 				>
 					<view
@@ -27,10 +27,10 @@
 						:key="index"
 						:style="{
 							color: value === item.name ? color : unColor,
-							padding: `0 ${gutter}rpx`,
+							padding: `0 ${gutter}rpx`
 						}"
 						:class="{
-							'is-active': value === item.name,
+							'is-active': value === item.name
 						}"
 						@tap="change(index)"
 					>
@@ -58,7 +58,7 @@
 						v-if="lineLeft > 0"
 						:style="{
 							'background-color': color,
-							left: lineLeft + 'px',
+							left: lineLeft + 'px'
 						}"
 					></view>
 				</view>
@@ -112,19 +112,19 @@ export default {
 		// 标签列表
 		labels: {
 			type: Array,
-			default: null,
+			default: null
 		},
 		// 是否循环显示
 		loop: {
 			type: Boolean,
-			default: true,
+			default: true
 		},
 		// 是否滑动
 		swipeable: Boolean,
 		// 滑动阈值
 		swipeThreshold: {
 			type: Number,
-			default: 60,
+			default: 60
 		},
 		// 是否吸顶
 		sticky: Boolean,
@@ -133,37 +133,37 @@ export default {
 		// 是否滚动视图
 		scrollView: {
 			type: Boolean,
-			default: true,
+			default: true
 		},
 		// 标签是否填充
 		fill: Boolean,
 		// 水平布局
 		justify: {
 			type: String,
-			default: "center",
+			default: "center"
 		},
 		// 是否带有下边框
 		border: {
 			type: Boolean,
-			default: true,
+			default: true
 		},
 		// 标签间隔
 		gutter: {
 			type: Number,
-			default: 20,
+			default: 20
 		},
 		// 字体及浮标颜色，默认主色
 		color: String,
 		// 未选中字体颜色
 		unColor: {
 			type: String,
-			default: "",
+			default: ""
 		},
 		// 背景颜色
 		backgroundColor: {
 			type: String,
-			default: "#fff",
-		},
+			default: "#fff"
+		}
 	},
 
 	data() {
@@ -174,7 +174,8 @@ export default {
 			scrollLeft: 0,
 			clientX: "",
 			clientY: "",
-			width: 375,
+			offsetLeft: 0,
+			width: 375
 		};
 	},
 
@@ -182,13 +183,13 @@ export default {
 		value: {
 			immediate: true,
 			handler(val) {
-				this.current = val;
-			},
+				this.current = val || 0;
+			}
 		},
 
 		current(val) {
 			this.onOffset(val);
-		},
+		}
 	},
 
 	computed: {
@@ -223,7 +224,7 @@ export default {
 			}
 
 			return list.join(" ");
-		},
+		}
 	},
 
 	mounted() {
@@ -246,7 +247,7 @@ export default {
 						label: e.label,
 						prefixIcon: e.prefixIcon,
 						suffixIcon: e.suffixIcon,
-						lazy: e.lazy,
+						lazy: e.lazy
 					};
 				});
 
@@ -256,7 +257,8 @@ export default {
 					.in(this)
 					// #endif
 					.select(".cl-tabs")
-					.fields({ size: true }, (d) => {
+					.boundingClientRect(d => {
+						this.offsetLeft = d.left;
 						this.width = d.width;
 						this.getRect();
 					})
@@ -308,7 +310,7 @@ export default {
 		},
 
 		getIndex() {
-			return this.tabs.findIndex((e) => e.name == this.current);
+			return this.tabs.findIndex(e => e.name == this.current);
 		},
 
 		prev() {
@@ -331,7 +333,7 @@ export default {
 					.in(this)
 					.selectAll(".cl-tabs__bar-item")
 					.fields({ rect: true, size: true })
-					.exec((d) => {
+					.exec(d => {
 						this.tabRect = d[0];
 						this.onOffset();
 					});
@@ -351,11 +353,11 @@ export default {
 						}
 
 						this.scrollLeft = scrollLeft;
-						this.lineLeft = item.left + item.width / 2 - 8;
+						this.lineLeft = item.left + item.width / 2 - 8 - this.offsetLeft;
 					}
 				});
 			}
-		},
-	},
+		}
+	}
 };
 </script>

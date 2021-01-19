@@ -1,97 +1,177 @@
 <template>
 	<view class="demo-tabs">
-		<cl-tabs v-model="tabIndex" swipeable>
-			<cl-tab-pane
-				v-for="(item, index) in list"
-				:key="index"
-				:name="index"
-				:label="item.label"
-				:refresher-enabled="item.refresherEnabled"
-				@pull-refresh="onPullRefresh(item, $event)"
-				@loadmore="onLoadmore(item)"
-			>
-				<view class="list">
-					<cl-list>
-						<cl-list-item
-							v-for="(item2, index2) in item.children"
-							:key="index2"
-							:label="`${item.label} - ${item2}`"
-						>
-							<cl-icon name="cl-icon-arrow-right"></cl-icon>
-						</cl-list-item>
-					</cl-list>
-				</view>
-			</cl-tab-pane>
-		</cl-tabs>
+		<cl-card label="选项栏">
+			<cl-tabs :labels="labels"> </cl-tabs>
+		</cl-card>
+
+		<cl-card label="带内容">
+			<view class="box">
+				<cl-tabs v-model="current" :labels="labels" :border="false">
+					<!-- 自定义内容区域 -->
+					<swiper class="container" @change="onChangeSwiper" :current="current">
+						<swiper-item v-for="(item, index) in list" :key="index">
+							<!-- 是否预加载 -->
+							<template v-if="item.loaded || index == current">
+								<cl-scroller :ref="`scroller-${index}`" @down="onDown" @up="onUp">
+									<!-- 首次加载框，可有可无 -->
+									<cl-loading-mask :loading="loading" text="加载中">
+										<!-- 列表 -->
+										<view class="list">
+											<cl-list-item
+												v-for="(item2, index2) in item.data"
+												:key="index2"
+												:label="`${item.label} - ${index2}`"
+											>
+												<cl-icon name="cl-icon-arrow-right"></cl-icon>
+											</cl-list-item>
+
+											<!-- 加载更多 -->
+											<cl-loadmore
+												v-if="item.data.length > 0"
+												:loading="item.loading"
+												:finish="item.finished"
+												:divider="false"
+											></cl-loadmore>
+										</view>
+									</cl-loading-mask>
+								</cl-scroller>
+							</template>
+						</swiper-item>
+					</swiper>
+				</cl-tabs>
+			</view>
+		</cl-card>
 	</view>
 </template>
 
 <script>
-import Test from "@/components/test";
-
 export default {
-	components: {
-		Test
-	},
-
 	data() {
-		return {
-			tabIndex: 0,
-			list: [
-				{
-					label: "抖音视频",
-					refresherEnabled: true
-				},
-				{
-					label: "热点"
-				},
-				{
-					label: "直播"
-				},
-				{
-					label: "图片",
-					"suffix-icon": "cl-icon-image"
-				},
-				{
-					label: "科技"
-				},
-				{
-					label: "娱乐"
-				},
-				{
-					label: "游戏"
-				},
-				{
-					label: "体育"
-				},
-				{
-					label: "财经"
-				},
-				{
-					label: "数码"
+		const labels = [
+			{
+				label: "热门",
+				value: 1,
+				loaded: true
+			},
+			{
+				label: "猜你喜欢",
+				value: 2
+			},
+			{
+				label: "女装",
+				value: 3
+			},
+			{
+				label: "美妆个护",
+				value: 4
+			},
+			{
+				label: "食品",
+				value: 5
+			},
+			{
+				label: "母婴",
+				value: 6
+			},
+			{
+				label: "数码家电",
+				value: 7
+			},
+			{
+				label: "家居家装",
+				value: 8
+			},
+			{
+				label: "内衣",
+				value: 9
+			}
+		];
+
+		const list = labels.map(e => {
+			return {
+				...e,
+				status: e.value,
+				data: [],
+				finished: false,
+				loading: false,
+				pagination: {
+					page: 1,
+					size: 20
 				}
-			]
+			};
+		});
+
+		return {
+			current: 0,
+			labels,
+			list,
+			loading: true
 		};
 	},
 
-	created() {
-		this.list.map((e, i) => {
-			this.$set(e, "children", this.rdList(15));
-		});
+	mounted() {
+		this.refresh();
 	},
 
 	methods: {
-		rdList(n) {
-			return new Array(n).fill(1).map(() => parseInt(Math.random() * 100));
+		onDown() {
+			this.refresh({
+				page: 1
+			}).done(() => {
+				this.$refs[`scroller-${this.current}`][0].end();
+			});
 		},
 
-		onPullRefresh(item, { done }) {
-			item.children = this.rdList(15);
-			done();
+		onUp() {
+			const { pagination, finished } = this.list[this.current];
+
+			if (!finished) {
+				this.refresh({
+					page: pagination.page + 1
+				});
+			}
 		},
 
-		onLoadmore(item) {
-			item.children.push(...this.rdList(10));
+		onChangeSwiper(e) {
+			this.current = e.detail.current;
+
+			if (!this.list[this.current].loaded) {
+				this.loading = true;
+				this.list[this.current].loaded = true;
+			}
+
+			setTimeout(() => {
+				this.refresh({
+					page: 1
+				});
+			}, 500);
+		},
+
+		refresh(params = {}) {
+			const item = this.list[this.current];
+
+			let data = {
+				...item.pagination,
+				status: item.status,
+				sort: "desc",
+				order: "createTime",
+				...params
+			};
+
+			return new Promise(resolve => {
+				item.loading = true;
+
+				console.log("Refresh");
+
+				setTimeout(() => {
+					item.data = new Array(data.page == 1 ? 10 : data.page * 10).fill(1);
+					item.pagination.page = data.page;
+					item.finished = false;
+					item.loading = false;
+					this.loading = false;
+					resolve();
+				}, 500);
+			});
 		}
 	}
 };
@@ -112,16 +192,21 @@ page {
 	height: 100%;
 	overflow: hidden;
 
-	/deep/.cl-tabs__container {
-		background-color: #f7f7f7;
-	}
+	.box {
+		height: 800rpx;
 
-	.list {
-		padding: 20rpx;
+		.container {
+			height: 100%;
+			background-color: #f7f7f7;
+		}
 
-		/deep/.cl-list-item {
-			margin-bottom: 20rpx;
-			border-radius: 10rpx;
+		.list {
+			padding: 20rpx;
+
+			/deep/.cl-list-item {
+				margin-bottom: 20rpx;
+				border-radius: 10rpx;
+			}
 		}
 	}
 }
