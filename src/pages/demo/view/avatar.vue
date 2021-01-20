@@ -3,7 +3,9 @@
 		<cl-card label="头像形状">
 			<cl-row>
 				<cl-col :span="6">
-					<cl-avatar></cl-avatar>
+					<view @tap="onTap">
+						<cl-avatar></cl-avatar>
+					</view>
 				</cl-col>
 
 				<cl-col :span="6">
@@ -29,6 +31,14 @@
 			</cl-row>
 		</cl-card>
 
+		<cl-card label="异常">
+			<cl-avatar src="https://">
+				<template #error>
+					神仙
+				</template>
+			</cl-avatar>
+		</cl-card>
+
 		<cl-card label="文字头像">
 			<cl-avatar :size="70">cool</cl-avatar>
 		</cl-card>
@@ -48,6 +58,12 @@ export default {
 					1}.jpg`;
 			})
 		};
+	},
+
+	methods: {
+		onTap() {
+			console.log(1111);
+		}
 	}
 };
 </script>

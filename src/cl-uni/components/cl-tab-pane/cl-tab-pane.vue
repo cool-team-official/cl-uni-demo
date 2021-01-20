@@ -7,7 +7,7 @@
 				@up="handleReachBottom"
 				@down="handlePullDownRefresh"
 			>
-				<template #loading="{status, text, move}">
+				<template #loading="{ status, text, move }">
 					<slot name="loading" :status="status" :text="text" :move="move"></slot>
 				</template>
 
@@ -57,8 +57,8 @@ export default {
 		// 启用下拉刷新
 		refresherEnabled: {
 			type: Boolean,
-			default: true
-		}
+			default: true,
+		},
 	},
 
 	mixins: [Parent],
@@ -68,14 +68,14 @@ export default {
 			loaded: this.lazy ? false : true,
 			triggered: false,
 			Keys: ["current", "scrollView"],
-			ComponentName: "ClTabs"
+			ComponentName: "ClTabs",
 		};
 	},
 
 	computed: {
 		visible() {
 			return this.parent.current == this.name;
-		}
+		},
 	},
 
 	watch: {
@@ -85,8 +85,8 @@ export default {
 				if (val) {
 					this.loaded = true;
 				}
-			}
-		}
+			},
+		},
 	},
 
 	methods: {
@@ -95,14 +95,14 @@ export default {
 				this.$emit("pull-refresh", {
 					done: () => {
 						this.$refs["scroller"].end();
-					}
+					},
 				});
 			}
 		},
 
 		handleReachBottom() {
 			this.$emit("loadmore");
-		}
-	}
+		},
+	},
 };
 </script>

@@ -31,7 +31,7 @@
 					<view class="block">
 						<cl-image size="150rpx" :src="url.placeholder">
 							<view class="placeholder" slot="error">
-								<cl-button type="primary" size="mini" @tap="changeImage">
+								<cl-button type="primary" size="mini" round @tap="changeImage">
 									<text>替换</text>
 								</cl-button>
 							</view>

@@ -5,7 +5,9 @@
 				:visible.sync="item.visible"
 				:direction="item.value"
 				@close="onClose"
+				@closed="onClosed"
 				@open="onOpen"
+				@opened="onOpened"
 			>
 				<p class="f-26">这是{{ item.label }}</p>
 			</cl-popup>
@@ -102,8 +104,14 @@ export default {
 		onOpen() {
 			console.log("open");
 		},
+		onOpened() {
+			console.log("opened");
+		},
 		onClose() {
 			console.log("close");
+		},
+		onClosed() {
+			console.log("closed");
 		},
 		submit() {
 			this.$refs["confirm"].open({

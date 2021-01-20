@@ -59,7 +59,10 @@
 
 		.cl-tab-pane {
 			height: 100%;
-			overflow: hidden;
+
+			&__scroller {
+				height: 100%;
+			}
 		}
 	}
 

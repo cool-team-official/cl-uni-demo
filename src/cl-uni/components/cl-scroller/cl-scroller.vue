@@ -4,7 +4,7 @@
 			class="cl-scroller"
 			:style="{
 				transform,
-				transition
+				transition,
 			}"
 			@touchmove="onTouchMove"
 			@touchstart="onTouchStart"
@@ -13,7 +13,7 @@
 			<view
 				class="cl-scroller__loading"
 				:style="{
-					top: `-${height}px`
+					top: `-${height}px`,
 				}"
 			>
 				<slot name="loading" :text="text" :status="status" :move="touch.move">
@@ -44,8 +44,8 @@
 			class="cl-scroller__back-top"
 			:class="[
 				{
-					fadeIn: backTopButtonFadeIn
-				}
+					fadeIn: backTopButtonFadeIn,
+				},
 			]"
 			@tap="backTop"
 			v-if="showBackTopButton"
@@ -76,27 +76,27 @@ export default {
 		// 距离顶部多少px触发
 		top: {
 			type: Number,
-			default: 80
+			default: 80,
 		},
 		// 距离底部多少px触发
 		bottom: {
 			type: Number,
-			default: 100
+			default: 100,
 		},
 		// 正在刷新文案
 		loadingText: {
 			type: String,
-			default: "正在刷新"
+			default: "正在刷新",
 		},
 		// 下拉刷新文案
 		pullingText: {
 			type: String,
-			default: "下拉刷新"
+			default: "下拉刷新",
 		},
 		// 释放刷新文案
 		releaseText: {
 			type: String,
-			default: "释放刷新"
+			default: "释放刷新",
 		},
 		// 滚动条距离顶部位置
 		scrollTop: Number,
@@ -105,14 +105,14 @@ export default {
 		// 在设置滚动条位置时使用动画过渡
 		scrollWithAnimation: {
 			type: Boolean,
-			default: true
+			default: true,
 		},
 		// 滚动条返回顶部
 		enableBackToTop: Boolean,
 		// 是否显示回到顶部按钮
 		showBackTopButton: {
 			type: Boolean,
-			default: true
+			default: true,
 		},
 		// 控制是否出现滚动条
 		showScrollbar: Boolean,
@@ -121,20 +121,20 @@ export default {
 		// 启用下拉刷新
 		refresherEnabled: {
 			type: Boolean,
-			default: true
-		}
+			default: true,
+		},
 	},
 
 	data() {
 		return {
 			touch: {
 				start: 0,
-				move: 0
+				move: 0,
 			},
 			height: 0,
 			scrollTop2: 0,
 			backTopButtonFadeIn: false,
-			status: "end" // pulling, loading, end
+			status: "end", // pulling, loading, end
 		};
 	},
 
@@ -143,8 +143,8 @@ export default {
 			immediate: true,
 			handler(val) {
 				this.scrollTop2 = val || "";
-			}
-		}
+			},
+		},
 	},
 
 	mounted() {
@@ -173,7 +173,7 @@ export default {
 				default:
 					return this.pullingText;
 			}
-		}
+		},
 	},
 
 	methods: {
@@ -215,7 +215,7 @@ export default {
 			uni.createSelectorQuery()
 				.in(this)
 				.select(".cl-scroller__loading")
-				.fields({ size: true }, d => {
+				.fields({ size: true }, (d) => {
 					this.height = d.height;
 				})
 				.exec();
@@ -247,7 +247,7 @@ export default {
 		// 回到顶部
 		backTop() {
 			this.scrollTop2 = Math.random();
-		}
-	}
+		},
+	},
 };
 </script>
