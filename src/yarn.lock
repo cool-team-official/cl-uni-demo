@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-cl-uni@^1.7.9:
-  version "1.7.9"
-  resolved "https://registry.yarnpkg.com/cl-uni/-/cl-uni-1.7.9.tgz#98dc1327a3aa38dd5d08611719588d41ebcbf2c1"
-  integrity sha512-x4Q/lpGQh51+HcsgwL/l9ReM9w0NX3Cl+F8db+vN3eJ+KKixGL2ljW1H9WGGzqgzC9VBadnT7Lo1Ximdn7h0Fw==
+cl-uni@^1.7.18:
+  version "1.7.18"
+  resolved "https://registry.yarnpkg.com/cl-uni/-/cl-uni-1.7.18.tgz#491112a2488a533621008d91763fc2413931cfa9"
+  integrity sha512-p00/PeVyvGx7/0+qB4c+etlSj8WPd2a6Ybw1jvvaPFwDOuMyQPMYmsM+JUwC8PIC3/S53aRFXo99M1mUBPHmRw==

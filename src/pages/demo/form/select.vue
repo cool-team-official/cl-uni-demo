@@ -1,7 +1,7 @@
 <template>
 	<view class="demo-select">
 		<cl-card label="基础用法">
-			<cl-select v-model="form.a" :options="options"></cl-select>
+			<cl-select v-model="form.a" :options="options" @confirm="onConfirm"></cl-select>
 		</cl-card>
 
 		<cl-card label="禁用状态">
@@ -35,7 +35,9 @@ export default {
 			options: [
 				{
 					label: "海南东山羊",
-					value: 0
+					value: 0,
+					d: 1,
+					a: 2
 				},
 				{
 					label: "乌鱼子",
@@ -59,6 +61,12 @@ export default {
 				}
 			]
 		};
+	},
+
+	methods: {
+		onConfirm(d) {
+			console.log(d);
+		}
 	}
 };
 </script>
