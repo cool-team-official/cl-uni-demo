@@ -1,17 +1,13 @@
 <template>
-	<cl-popup :visible="true" direction="bottom" @opened="onOpened">
-		<view class="box">
-			<cl-list-index
-				ref="list-index"
-				:index="active"
-				:list="list"
-				@search="onSearch"
-				@select="onSelect"
-				@change="onChange"
-			>
-			</cl-list-index>
-		</view>
-	</cl-popup>
+	<cl-list-index
+		ref="list-index"
+		:index="active"
+		:list="list"
+		@search="onSearch"
+		@select="onSelect"
+		@change="onChange"
+	>
+	</cl-list-index>
 </template>
 
 <script>
@@ -166,10 +162,6 @@ export default {
 
 		onChange(item) {
 			console.log("change", item);
-		},
-
-		onOpened() {
-			this.$refs["list-index"].doLayout();
 		}
 	}
 };
@@ -185,9 +177,5 @@ page {
 	height: 100vh;
 	// #endif
 	overflow: hidden;
-}
-
-.box {
-	height: 800rpx;
 }
 </style>
