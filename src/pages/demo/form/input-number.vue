@@ -12,8 +12,12 @@
 			<cl-input-number v-model="val2" :max="10" :min="4"></cl-input-number>
 		</cl-card>
 
+		<cl-card label="小数">
+			<cl-input-number v-model="val3" :step="0.6" :precision="2"></cl-input-number>
+		</cl-card>
+
 		<cl-card label="可编辑">
-			<cl-input-number v-model="val3" input></cl-input-number>
+			<cl-input-number v-model="val4" input></cl-input-number>
 		</cl-card>
 	</view>
 </template>
@@ -25,7 +29,8 @@ export default {
 			val: 0,
 			val1: 5,
 			val2: 0,
-			val3: 1
+			val3: 6.66,
+			val4: 1
 		};
 	}
 };

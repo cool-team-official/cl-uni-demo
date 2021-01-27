@@ -1,7 +1,7 @@
 <template>
 	<view class="demo-tabs">
 		<cl-card label="选项栏">
-			<cl-tabs :labels="labels"> </cl-tabs>
+			<cl-tabs ref="tabs" v-model="current" :labels="labels2"> </cl-tabs>
 		</cl-card>
 
 		<cl-card label="带内容">
@@ -51,6 +51,7 @@ export default {
 			{
 				label: "热门",
 				value: 1,
+				name: 1,
 				loaded: true
 			},
 			{
@@ -102,8 +103,9 @@ export default {
 		});
 
 		return {
-			current: 0,
+			current: 1,
 			labels,
+			labels2: [],
 			list,
 			loading: true
 		};
@@ -111,6 +113,48 @@ export default {
 
 	mounted() {
 		this.refresh();
+
+		setTimeout(() => {
+			this.labels2 = [
+				{
+					label: "热门",
+					value: 1,
+					loaded: true
+				},
+				{
+					label: "猜你喜欢",
+					value: 2
+				},
+				{
+					label: "女装",
+					value: 3
+				},
+				{
+					label: "美妆个护",
+					value: 4
+				},
+				{
+					label: "食品",
+					value: 5
+				},
+				{
+					label: "母婴",
+					value: 6
+				},
+				{
+					label: "数码家电",
+					value: 7
+				},
+				{
+					label: "家居家装",
+					value: 8
+				},
+				{
+					label: "内衣",
+					value: 9
+				}
+			];
+		}, 1000);
 	},
 
 	methods: {
