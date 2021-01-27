@@ -11,6 +11,10 @@
 		<cl-card label="范围（4~10）">
 			<cl-input-number v-model="val2" :max="10" :min="4"></cl-input-number>
 		</cl-card>
+
+		<cl-card label="可编辑">
+			<cl-input-number v-model="val3" input></cl-input-number>
+		</cl-card>
 	</view>
 </template>
 
@@ -20,7 +24,8 @@ export default {
 		return {
 			val: 0,
 			val1: 5,
-			val2: 0
+			val2: 0,
+			val3: 1
 		};
 	}
 };

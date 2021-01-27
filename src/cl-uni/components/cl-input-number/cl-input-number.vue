@@ -5,7 +5,11 @@
 			<text class="cl-icon-minus"></text>
 		</button>
 
-		<text class="cl-input-number__value">{{ value2 }}</text>
+		<!-- 值 -->
+		<view class="cl-input-number__value" :style="{ width: width2 }">
+			<input type="number" v-model="value2" @change="update" v-if="input" />
+			<text v-else>{{ value2 }}</text>
+		</view>
 
 		<!-- 加 -->
 		<button class="cl-input-number__plus" @tap="onPlus">
@@ -27,6 +31,8 @@
  * @example <cl-input-number v-model="val" />
  */
 
+import { parseRpx, isString } from "../../utils";
+
 export default {
 	name: "cl-input-number",
 
@@ -34,26 +40,40 @@ export default {
 		// 绑定值
 		value: {
 			type: Number,
-			required: true
+			required: true,
 		},
 		step: {
 			type: Number,
-			default: 1
+			default: 1,
 		},
 		max: {
 			type: Number,
-			default: 100
+			default: 100,
 		},
 		min: {
 			type: Number,
-			default: 0
-		}
+			default: 0,
+		},
+		input: {
+			type: Boolean,
+			default: false,
+		},
+		width: {
+			type: Number,
+			default: 100,
+		},
 	},
 
 	data() {
 		return {
-			value2: 0
+			value2: 0,
 		};
+	},
+
+	computed: {
+		width2() {
+			return this.input ? parseRpx(this.width) : "auto";
+		},
 	},
 
 	watch: {
@@ -74,8 +94,8 @@ export default {
 				}
 
 				this.value2 = val;
-			}
-		}
+			},
+		},
 	},
 
 	methods: {
@@ -100,13 +120,17 @@ export default {
 		},
 
 		update() {
+			if (isString(this.value2)) {
+				this.value2 = Number(this.value2);
+			}
+
 			if (this.min > this.max) {
 				this.value2 = this.max;
 			}
 
 			this.$emit("input", this.value2);
 			this.$emit("change", this.value2);
-		}
-	}
+		},
+	},
 };
 </script>
