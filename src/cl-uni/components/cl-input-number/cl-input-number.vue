@@ -43,41 +43,41 @@ export default {
 		// 绑定值
 		value: {
 			type: Number,
-			required: true
+			required: true,
 		},
 		step: {
 			type: Number,
-			default: 1
+			default: 1,
 		},
 		max: {
 			type: Number,
-			default: 100
+			default: 100,
 		},
 		min: {
 			type: Number,
-			default: 0
+			default: 0,
 		},
 		input: {
 			type: Boolean,
-			default: false
+			default: false,
 		},
 		width: {
 			type: Number,
-			default: 100
+			default: 100,
 		},
-		precision: Number
+		precision: Number,
 	},
 
 	data() {
 		return {
-			value2: 0
+			value2: 0,
 		};
 	},
 
 	computed: {
 		width2() {
 			return this.input ? parseRpx(this.width) : "auto";
-		}
+		},
 	},
 
 	watch: {
@@ -98,8 +98,8 @@ export default {
 				}
 
 				this.value2 = val;
-			}
-		}
+			},
+		},
 	},
 
 	methods: {
@@ -141,7 +141,7 @@ export default {
 
 			this.$emit("input", this.value2);
 			this.$emit("change", this.value2);
-		}
-	}
+		},
+	},
 };
 </script>
