@@ -6,7 +6,7 @@
 
 [https://docs.cool-js.com](https://docs.cool-js.com)
 
-[https://uni.cool-js.com](https://uni.cool-js.com)
+[https://uni-docs.cool-js.com](https://uni-docs.cool-js.com)
 
 ## 官网
 
