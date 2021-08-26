@@ -19,9 +19,9 @@ export default {
 	data() {
 		return {
 			list: [
-				"/static/images/banner1.png",
-				"/static/images/banner2.png",
-				"/static/images/banner3.png"
+				{ url: "/static/images/banner1.png"},
+				{ url: "/static/images/banner2.png"},
+				{ url: "/static/images/banner3.png"}
 			]
 		};
 	}
